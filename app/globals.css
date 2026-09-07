@@ -203,19 +203,24 @@
   to { visibility: hidden; }
 }
 
-/* Marquee track — duplicated content, translate by exactly -50% */
+/* Marquee track.
+   The content is repeated N times and the track shifts by exactly one copy
+   (100% / N), so the loop point lands on an identical frame.
+
+   N must be high enough that the copies NOT being scrolled past still cover
+   the viewport — with only two copies and a row narrower than the screen, the
+   track runs out of content near the end of the cycle and leaves a visible
+   gap. Four copies covers ultrawide displays at any row width we use. */
 @keyframes marquee-x {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(calc(-100% / var(--marquee-copies, 4))); }
 }
 .marquee-track {
   animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
 }
 .marquee-track[data-dir="reverse"] {
   animation-direction: reverse;
-}
-.marquee-host:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 /* ============================================================
