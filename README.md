@@ -53,12 +53,15 @@ content/                All copy and data. No text is hardcoded in components.
   projects.ts           The 11 projects, bilingual
   site.ts               Profile, contact, capability pillars, derived stats
   ui.ts                 Interface strings
+  logos.ts              Generated brand marks — see scripts/gen-logos.cjs
 lib/                    i18n provider, motion tokens, browser hooks
 components/
   motion/               Generic primitives (Reveal, ScrambleText, TiltCard…)
   layout/               App shell (Nav, Footer, cursor, boot overlay…)
   sections/             Page sections
-  project/              Project card, grid, detail, badges
+  tech/                 Technology icons and badges
+  project/              Card, index, detail, image, badges
+scripts/gen-logos.cjs   Regenerates content/logos.ts
 public/projects/        Screenshots (WebP)
 ```
 
@@ -77,6 +80,25 @@ accent colour and stack instead, which is why Notula still looks deliberate.
 
 **Both languages are required.** `LocalizedText` is `{ id: string; en: string }`,
 so TypeScript will not let a translation be forgotten.
+
+---
+
+### Technology logos
+
+`content/logos.ts` is generated. It vendors only the ~20 brand paths the site
+actually uses, so `simple-icons` is not a dependency and the icon set costs
+nothing at runtime. To add a technology with a brand mark, add the name-to-slug
+entry in `scripts/gen-logos.cjs` and run it:
+
+```bash
+npm install --no-save simple-icons@16
+node scripts/gen-logos.cjs
+npm uninstall simple-icons
+```
+
+Techniques with no brand mark (RAG, LLM, VLM, HNSW, pgvector, Docling, Zustand)
+are drawn by hand in `components/tech/TechIcon.tsx` as stroked glyphs — a
+deliberately separate family from the filled product marks.
 
 ---
 
@@ -103,3 +125,12 @@ visitors and shows once per session for everyone else.
 
 **Images are WebP.** The source screenshots totalled 4.6 MB; re-encoding cut
 that to 832 KB with no visible loss. `next/image` serves them down further.
+
+**The archive is an index, not a second gallery.** `/work` lists eleven projects
+as numbered rules with the screenshot riding the cursor, so it reads differently
+from the card grid on the home page. Structural repetition between sections was
+the main thing making the first pass feel templated.
+
+**Almost nothing is a rounded card.** Radii are 2–5px, surfaces are hairlines
+rather than filled boxes, and the background carries a faint construction grid
+instead of blurred colour blobs.

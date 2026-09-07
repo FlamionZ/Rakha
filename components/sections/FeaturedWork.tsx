@@ -28,7 +28,7 @@ export function FeaturedWork() {
           aside={
             <Link
               href="/work"
-              className="group inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 font-mono text-xs text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
+              className="group inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-mono text-xs text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
             >
               {t(ui.sections.viewAll)}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -38,7 +38,7 @@ export function FeaturedWork() {
           }
         />
 
-        <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-6">
           {featuredProjects.map((project, i) => (
             <li key={project.slug} className={SPANS[i] ?? "lg:col-span-2"}>
               <Reveal delay={Math.min(i, 3) * 0.06} className="h-full">

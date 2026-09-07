@@ -17,7 +17,6 @@ export const ui = {
   hero: {
     available: { id: "Terbuka untuk proyek baru", en: "Open to new projects" },
     lead: { id: "Membangun", en: "I build" },
-    scroll: { id: "Gulir", en: "Scroll" },
     viewWork: { id: "Lihat Karya", en: "View Work" },
     getInTouch: { id: "Hubungi Saya", en: "Get in Touch" },
   },

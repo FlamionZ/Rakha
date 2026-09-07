@@ -39,11 +39,11 @@ export function Hero() {
           initial={reduced ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1.5 backdrop-blur-md"
+          className="mb-8 inline-flex items-center gap-2 rounded-sm border border-border bg-surface/60 px-3 py-1.5 backdrop-blur-md"
         >
           <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-sm bg-accent opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-sm bg-accent" />
           </span>
           <span className="font-mono text-[11px] tracking-wide text-muted">
             {t(ui.hero.available)}
@@ -99,7 +99,7 @@ export function Hero() {
           <Magnetic strength={0.3}>
             <Link
               href="/work"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
+              className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
             >
               {t(ui.hero.viewWork)}
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -111,7 +111,7 @@ export function Hero() {
           <Magnetic strength={0.3}>
             <a
               href={`mailto:${site.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-mono text-sm text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-sm border border-border px-6 py-3 font-mono text-sm text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
             >
               {t(ui.hero.getInTouch)}
             </a>
@@ -136,22 +136,6 @@ export function Hero() {
         </motion.dl>
       </div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={reduced ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
-        className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
-        aria-hidden="true"
-      >
-        <span className="label">{t(ui.hero.scroll)}</span>
-        <motion.span
-          className="block h-8 w-px bg-gradient-to-b from-accent to-transparent"
-          animate={reduced ? undefined : { scaleY: [0.3, 1, 0.3], opacity: [0.3, 1, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          style={{ transformOrigin: "top" }}
-        />
-      </motion.div>
     </section>
   );
 }

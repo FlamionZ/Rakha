@@ -57,7 +57,7 @@ export function Nav() {
       {/* Lives in Nav rather than the layout so it can be localised. */}
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[130] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-semibold focus:text-bg"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[130] focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:font-semibold focus:text-bg"
       >
         {t(ui.a11y.skipToContent)}
       </a>
@@ -87,7 +87,7 @@ export function Nav() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`relative rounded-full px-3 py-1.5 font-mono text-xs tracking-wide transition-colors duration-200 ${
+                    className={`relative rounded-sm px-3 py-1.5 font-mono text-xs tracking-wide transition-colors duration-200 ${
                       isActive(link.href) ? "text-accent" : "text-muted hover:text-fg"
                     }`}
                   >
@@ -109,7 +109,7 @@ export function Nav() {
             <Magnetic strength={0.25} className="hidden sm:block">
               <a
                 href={`mailto:${site.email}`}
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 font-mono text-xs font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(198,255,61,0.45)]"
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-4 py-1.5 font-mono text-xs font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(198,255,61,0.45)]"
               >
                 {t(ui.hero.getInTouch)}
               </a>
@@ -120,7 +120,7 @@ export function Nav() {
               onClick={() => setMenuOpen((open) => !open)}
               aria-expanded={menuOpen}
               aria-label={t(menuOpen ? ui.nav.close : ui.nav.menu)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-fg md:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-sm border border-border text-fg md:hidden"
             >
               <span className="relative block h-3 w-4">
                 <motion.span

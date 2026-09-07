@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProjectGrid } from "@/components/project/ProjectGrid";
+import { ProjectIndex } from "@/components/project/ProjectIndex";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ui } from "@/content/ui";
@@ -20,7 +20,7 @@ export default function WorkPage() {
             title={ui.sections.allWorkTitle}
             body={ui.sections.allWorkBody}
           />
-          <ProjectGrid />
+          <ProjectIndex />
         </div>
       </div>
       <ContactCTA />

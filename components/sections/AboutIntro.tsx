@@ -45,11 +45,11 @@ export function AboutIntro() {
           </div>
 
           <Reveal delay={0.14} className="lg:col-span-1">
-            <dl className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-surface">
+            <dl className="border-t border-border">
               {DETAILS.map((detail) => (
                 <div
                   key={detail.label.en}
-                  className="flex items-baseline justify-between gap-4 px-5 py-3.5"
+                  className="flex items-baseline justify-between gap-4 border-b border-border py-3.5"
                 >
                   <dt className="label shrink-0">{t(detail.label)}</dt>
                   <dd className="text-right font-mono text-xs text-fg">

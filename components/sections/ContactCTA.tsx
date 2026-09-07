@@ -48,7 +48,7 @@ export function ContactCTA() {
             <Magnetic strength={0.3}>
               <a
                 href={`mailto:${site.email}`}
-                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
+                className="group inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
               >
                 {t(ui.contact.email)}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -62,7 +62,7 @@ export function ContactCTA() {
                 href={`https://wa.me/${site.whatsapp}`}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-mono text-sm text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
+                className="inline-flex items-center gap-2 rounded-sm border border-border px-6 py-3 font-mono text-sm text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
               >
                 {t(ui.contact.whatsapp)}
               </a>

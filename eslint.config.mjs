@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Node-side codegen; CommonJS on purpose and never bundled.
+    "scripts/**",
   ]),
 ]);
 

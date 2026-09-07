@@ -53,7 +53,7 @@ export function ProjectImage({
           {stack.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-border-bright bg-bg/60 px-2 py-0.5 font-mono text-[10px] text-muted"
+              className="rounded-sm border border-border-bright bg-bg/60 px-2 py-0.5 font-mono text-[10px] text-muted"
             >
               {tech}
             </span>

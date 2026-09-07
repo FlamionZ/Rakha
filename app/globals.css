@@ -14,7 +14,7 @@
   /* text */
   --color-fg: #e6eaf2;
   --color-muted: #7c8598;
-  --color-faint: #49516280;
+  --color-faint: #565f73;
 
   /* accents */
   --color-accent: #c6ff3d;
@@ -27,6 +27,12 @@
   --font-display: var(--ff-display), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--ff-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--ff-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Radii. Deliberately tight — the previous pass rounded every surface to
+     16px, which is what made each section read as another soft card. */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
 
   /* motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -247,8 +253,27 @@ html.custom-cursor button {
   cursor: none;
 }
 
-/* Dot grid backdrop */
+/* Blueprint grid — structural texture rather than decorative blur. */
+.blueprint {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-border) 70%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-border) 70%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
 .dot-grid {
   background-image: radial-gradient(circle at center, var(--color-border-bright) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+/* Hairline that fades at both ends — used to separate index rows without
+   drawing a hard box around anything. */
+.rule-fade {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border) 8%,
+    var(--color-border) 92%,
+    transparent
+  );
 }
