@@ -62,7 +62,7 @@ export function WordsPullUp({
             {unit === " " ? " " : unit}
             {showAsterisk && isLast && (
               <span
-                className="absolute -right-[0.34em] top-[0.06em] text-[0.26em] text-accent"
+                className="absolute -right-[0.3em] top-[0.55em] text-[0.3em] text-accent"
                 aria-hidden="true"
               >
                 *
