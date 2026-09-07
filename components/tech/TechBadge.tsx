@@ -64,7 +64,7 @@ export function TechStrip({ names, max = 6, className, size = "sm" }: TechStripP
         </span>
       ))}
       {overflow > 0 && (
-        <span className="font-mono text-[10px] leading-none text-faint">+{overflow}</span>
+        <span className="font-mono text-[11px] leading-none text-muted">+{overflow}</span>
       )}
     </span>
   );

@@ -12,6 +12,12 @@ interface SectionHeadingProps {
   /** Rendered on the right on wide screens — usually a "view all" link. */
   aside?: ReactNode;
   align?: "left" | "center";
+  /**
+   * Heading level. Pages whose main title IS this heading must pass "h1" —
+   * /work and /about previously started their outline at h2, leaving both
+   * without a top-level heading for search engines and screen readers.
+   */
+  as?: "h1" | "h2";
 }
 
 /**
@@ -24,6 +30,7 @@ export function SectionHeading({
   body,
   aside,
   align = "left",
+  as: Heading = "h2",
 }: SectionHeadingProps) {
   const { t } = useLocale();
   const centered = align === "center";
@@ -42,7 +49,7 @@ export function SectionHeading({
           </p>
         </Reveal>
         <Reveal delay={0.06}>
-          <h2 className="display-lg text-fg">{t(title)}</h2>
+          <Heading className="display-lg text-fg">{t(title)}</Heading>
         </Reveal>
         {body && (
           <Reveal delay={0.12}>

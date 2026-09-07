@@ -19,6 +19,7 @@ export default function WorkPage() {
             label={ui.sections.allWorkLabel}
             title={ui.sections.allWorkTitle}
             body={ui.sections.allWorkBody}
+            as="h1"
           />
           <ProjectIndex />
         </div>

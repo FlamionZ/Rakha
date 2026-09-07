@@ -76,7 +76,7 @@ export function ProjectCard({ project, priority = false, featured = false }: Pro
 
           <div className="flex items-baseline gap-3">
             <span
-              className="font-mono text-xs tabular-nums text-faint transition-colors duration-300 group-hover:text-[var(--accent)]"
+              className="font-mono text-xs tabular-nums text-muted transition-colors duration-300 group-hover:text-[var(--accent)]"
               aria-hidden="true"
             >
               {String(project.index).padStart(2, "0")}

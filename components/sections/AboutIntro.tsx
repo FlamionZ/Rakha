@@ -32,7 +32,7 @@ export function AboutIntro() {
   return (
     <section className="px-5 pb-8 pt-32 sm:px-8">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading label={ui.sections.aboutLabel} title={ui.sections.aboutTitle} />
+        <SectionHeading label={ui.sections.aboutLabel} title={ui.sections.aboutTitle} as="h1" />
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           <div className="lg:col-span-2">

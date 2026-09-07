@@ -72,7 +72,7 @@ export function Nav() {
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
           <Link
             href="/"
-            className="group flex items-center gap-2 font-mono text-sm font-medium tracking-tight"
+            className="group -my-3 flex items-center gap-2 py-3 font-mono text-sm font-medium tracking-tight"
           >
             <span className="text-accent transition-transform duration-300 group-hover:translate-x-0.5">
               &#10095;
@@ -87,7 +87,7 @@ export function Nav() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`relative rounded-sm px-3 py-1.5 font-mono text-xs tracking-wide transition-colors duration-200 ${
+                    className={`relative rounded-sm px-3 py-2.5 font-mono text-xs tracking-wide transition-colors duration-200 ${
                       isActive(link.href) ? "text-accent" : "text-muted hover:text-fg"
                     }`}
                   >
@@ -120,7 +120,7 @@ export function Nav() {
               onClick={() => setMenuOpen((open) => !open)}
               aria-expanded={menuOpen}
               aria-label={t(menuOpen ? ui.nav.close : ui.nav.menu)}
-              className="flex h-9 w-9 items-center justify-center rounded-sm border border-border text-fg md:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-sm border border-border text-fg md:hidden"
             >
               <span className="relative block h-3 w-4">
                 <motion.span

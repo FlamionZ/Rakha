@@ -34,7 +34,7 @@ export function Footer() {
                   href={social.href}
                   target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel="noreferrer noopener"
-                  className="group inline-flex items-center gap-1.5 font-mono text-xs text-muted transition-colors hover:text-accent"
+                  className="group inline-flex items-center gap-1.5 py-2 font-mono text-xs text-muted transition-colors hover:text-accent"
                 >
                   {social.label}
                   <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
@@ -55,7 +55,7 @@ export function Footer() {
           </p>
           <Link
             href="#top"
-            className="font-mono text-[11px] text-muted transition-colors hover:text-accent"
+            className="-my-3 inline-block py-3 font-mono text-[11px] text-muted transition-colors hover:text-accent"
           >
             {t(ui.footer.backToTop)} &#8593;
           </Link>

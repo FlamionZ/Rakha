@@ -28,7 +28,7 @@ export function LocaleToggle() {
             type="button"
             onClick={() => setLocale(option)}
             aria-pressed={isActive}
-            className={`relative rounded-sm px-2.5 py-1 font-mono text-[11px] font-medium tracking-widest transition-colors duration-200 ${
+            className={`relative rounded-sm px-3 py-2 font-mono text-[11px] font-medium tracking-widest transition-colors duration-200 ${
               isActive ? "text-bg" : "text-muted hover:text-fg"
             }`}
           >

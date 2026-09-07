@@ -83,7 +83,7 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
                 </Magnetic>
               ) : (
                 // Dead demo: state the fact, never link to a page that will not load.
-                <span className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-mono text-sm text-faint">
+                <span className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-mono text-sm text-muted">
                   {t(project.demo.label)}
                 </span>
               )}
@@ -137,7 +137,7 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
                   <Reveal delay={i * 0.07}>
                     <div className="group flex gap-5 py-7">
                       <span
-                        className="shrink-0 font-mono text-xs tabular-nums text-faint transition-colors duration-300 group-hover:text-[var(--accent)]"
+                        className="shrink-0 font-mono text-xs tabular-nums text-muted transition-colors duration-300 group-hover:text-[var(--accent)]"
                         aria-hidden="true"
                       >
                         {String(i + 1).padStart(2, "0")}

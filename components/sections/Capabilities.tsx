@@ -36,7 +36,7 @@ export function Capabilities() {
                 {/* Oversized numeral in the margin */}
                 <div className="md:col-span-2">
                   <span
-                    className="font-display text-4xl font-bold leading-none tracking-tight text-border-bright transition-colors duration-500 group-hover:text-[var(--accent)] md:text-6xl"
+                    className="font-display text-5xl font-bold leading-none tracking-tight text-faint transition-colors duration-500 group-hover:text-[var(--accent)] md:text-7xl"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, "0")}
@@ -49,7 +49,7 @@ export function Capabilities() {
                   </h3>
                   <span
                     aria-hidden="true"
-                    className="mt-4 block h-px w-12 origin-left scale-x-100 transition-transform duration-500 group-hover:scale-x-[2.5]"
+                    className="mt-5 block h-0.5 w-14 origin-left transition-transform duration-500 group-hover:scale-x-[2.2]"
                     style={{ background: capability.accent }}
                   />
                 </div>

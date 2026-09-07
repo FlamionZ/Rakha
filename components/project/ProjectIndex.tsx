@@ -16,8 +16,8 @@ type Filter = ProjectTag | "all";
 const STATUS_TONE: Record<Project["status"], string> = {
   live: "text-accent",
   local: "text-accent-2",
-  inactive: "text-faint",
-  completed: "text-faint",
+  inactive: "text-muted",
+  completed: "text-muted",
 };
 
 /** Below `sm` the status word does not fit, so it becomes a dot on the thumb. */
@@ -101,12 +101,12 @@ export function ProjectIndex() {
               type="button"
               onClick={() => setActive(filter.key)}
               aria-pressed={isActive}
-              className={`group/f font-mono text-xs tracking-wide transition-colors duration-200 ${
+              className={`group/f -my-3 py-3 font-mono text-xs tracking-wide transition-colors duration-200 ${
                 isActive ? "text-accent" : "text-muted hover:text-fg"
               }`}
             >
               {t(filter.label)}
-              <sup className="ml-1 text-[9px] tabular-nums text-faint">{filter.count}</sup>
+              <sup className="ml-1 text-[10px] tabular-nums text-muted">{filter.count}</sup>
               <span
                 className={`mt-1 block h-px origin-left bg-accent transition-transform duration-300 ${
                   isActive ? "scale-x-100" : "scale-x-0"
@@ -148,7 +148,7 @@ export function ProjectIndex() {
 
                 {/* Index */}
                 <span
-                  className="relative w-7 shrink-0 font-mono text-xs tabular-nums text-faint transition-colors duration-300 group-hover:text-[var(--accent)] sm:w-10 sm:text-sm lg:w-auto"
+                  className="relative w-7 shrink-0 font-mono text-xs tabular-nums text-muted transition-colors duration-300 group-hover:text-[var(--accent)] sm:w-10 sm:text-sm lg:w-auto"
                   aria-hidden="true"
                 >
                   {String(project.index).padStart(2, "0")}

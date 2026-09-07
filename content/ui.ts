@@ -71,7 +71,7 @@ export const ui = {
 
   contact: {
     label: { id: "Kontak", en: "Contact" },
-    title: { id: "Mari bangun sesuatu", en: "Let us build something" },
+    title: { id: "Mari bangun sesuatu", en: "Let's build something" },
     body: {
       id: "Terbuka untuk peran fullstack, rekayasa AI, dan proyek freelance. Balasan biasanya dalam 24 jam.",
       en: "Open to fullstack roles, AI engineering work and freelance projects. I usually reply within 24 hours.",
