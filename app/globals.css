@@ -282,3 +282,65 @@ html.custom-cursor button {
     transparent
   );
 }
+
+/* ============================================================
+   Hero backdrop — slow cross-fade between project screenshots.
+   Pure CSS so the largest element on the page costs no JS.
+   Negative delays start each slide already part-way through its
+   cycle, so the sequence is staggered from the very first frame.
+   ============================================================ */
+@keyframes hero-slide {
+  0% { opacity: 0; transform: scale(1.04); }
+  4% { opacity: 1; }
+  28% { opacity: 1; }
+  34% { opacity: 0; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+
+.hero-slide {
+  opacity: 0;
+  animation: hero-slide 21s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No cycling: hold the first frame so the hero still has a ground. */
+  .hero-slide {
+    animation: none;
+    opacity: 0;
+  }
+  .hero-slide:first-child {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   Entrance animations, CSS-driven.
+
+   The hero previously used JS-driven motion with `initial: opacity 0`,
+   which React serialises into the server-rendered markup — so if the
+   bundle failed or was slow, the page's largest heading rendered
+   invisible. These run from a stylesheet instead: no JS required, and
+   `both` fill-mode holds the final state once complete.
+
+   Under reduced-motion the global rule above collapses the duration,
+   and fill-mode lands them on the finished frame immediately.
+   ============================================================ */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+.rise-in {
+  animation: rise-in 0.8s var(--ease-out-expo) both;
+  animation-delay: var(--rise-delay, 0s);
+}
+
+@keyframes pull-up {
+  from { opacity: 0; transform: translateY(0.4em); }
+  to { opacity: 1; transform: none; }
+}
+
+.pull-up-unit {
+  animation: pull-up 0.7s var(--ease-out-expo) both;
+  animation-delay: calc(var(--pull-delay, 0s) + var(--i, 0) * var(--pull-stagger, 0.07s));
+}
