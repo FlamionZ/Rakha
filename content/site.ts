@@ -16,7 +16,7 @@ export const site = {
   whatsapp: "6285742303620",
   github: "https://github.com/FlamionZ",
   linkedin: "https://linkedin.com/in/muhrakabi",
-  url: "https://rakha.dev",
+  url: "https://muhrakabi.my.id",
   /** Where he builds. Surfaced in the hero and footer as a credibility signal. */
   company: {
     name: "Astheron Technologies",
