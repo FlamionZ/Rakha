@@ -7,16 +7,11 @@ import { site, tagline } from "@/content/site";
 import { ui } from "@/content/ui";
 import { useLocale } from "@/lib/i18n";
 
-/**
- * Portrait.
- *
- * The reference points at a stock headshot on a CDN — a photo of someone else
- * entirely, which obviously cannot stand in for his face. Drop a real image at
- * /public/portrait.jpg and set this; nothing else needs to change. Until then
- * the frame carries his monogram, which reads as a deliberate mark rather than
- * a broken image.
- */
-const PORTRAIT: string | null = null;
+/** Real photo, dark charcoal background, face centred horizontally — an
+ * object-cover crop at the pill's narrow ratio trims the sides and keeps the
+ * full head-to-chest height, so the default centre position needs no
+ * adjustment. */
+const PORTRAIT: string | null = "/me.webp";
 
 const MONOGRAM = "MRA";
 
