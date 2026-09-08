@@ -39,6 +39,10 @@ export const ui = {
     },
     servicesProof: { id: "Buktinya", en: "Proof" },
 
+    experienceLabel: { id: "Pengalaman", en: "Experience" },
+    experienceTitle: { id: "Tempat saya membangun", en: "Where I have built" },
+    educationLabel: { id: "Pendidikan", en: "Education" },
+
     statsLabel: { id: "Rekapitulasi", en: "By the numbers" },
 
     allWorkLabel: { id: "Arsip Lengkap", en: "Full Archive" },

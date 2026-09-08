@@ -26,6 +26,14 @@ const MAP = {
   TypeScript: "typescript",
   Vercel: "vercel",
   Vite: "vite",
+  Docker: "docker",
+  PyTorch: "pytorch",
+  TensorFlow: "tensorflow",
+  "Scikit-Learn": "scikitlearn",
+  NumPy: "numpy",
+  Qdrant: "qdrant",
+  Flask: "flask",
+  "Node.js": "nodedotjs",
 };
 
 function hexToHsl(h) {

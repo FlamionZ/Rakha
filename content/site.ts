@@ -30,7 +30,7 @@ export const site = {
  * Left null deliberately: a button that 404s is worse than no button. Drop a
  * PDF at /public/cv.pdf and set this to "/cv.pdf" — nothing else changes.
  */
-export const cvPath: string | null = null;
+export const cvPath: string | null = "/CV-Muhammad-Rakha-Abimanyu.pdf";
 
 export const summary: LocalizedText = {
   id: "Fullstack Engineer dengan keahlian khusus merancang sistem web modern berlatensi rendah serta mengintegrasikan kapabilitas Artificial Intelligence — LLM, Vision Language Model, RAG, dan Vector Search — ke dalam aplikasi produksi.",
@@ -44,8 +44,8 @@ export const tagline: LocalizedText = {
 };
 
 export const summaryLong: LocalizedText = {
-  id: "Berpengalaman merancang dan mengimplementasikan 11 produk perangkat lunak lintas skala — mulai dari arsitektur microservices untuk enterprise CRM, sistem AI-native POS multimodal, engine RAG domain spesifik, aplikasi mobile AI, search engine platform UMKM regional, hingga penanganan sistem live-chat berkonkurensi tinggi pada event kenegaraan.",
-  en: "I have designed and shipped 11 software products across a wide range of scales — microservice architecture for an enterprise CRM, a multimodal AI-native POS, a domain-specific RAG engine, an AI mobile app, a regional MSME search platform, and a high-concurrency live-chat system for a state occasion.",
+  id: "Berpengalaman end-to-end meluncurkan platform SaaS produksi, dari tahap PRD hingga deployment, dengan fokus pada clean architecture, optimalisasi performa, dan product delivery yang andal. Sebelas produk perangkat lunak lintas skala — arsitektur microservices untuk enterprise CRM, POS AI-native multimodal, engine RAG domain spesifik, aplikasi mobile AI, search engine untuk UMKM regional, hingga live-chat berkonkurensi tinggi pada event kenegaraan.",
+  en: "I take production SaaS platforms end to end, from PRD through to deployment, with a focus on clean architecture, performance and dependable delivery. Eleven software products across a wide range of scales — microservice architecture for an enterprise CRM, a multimodal AI-native POS, a domain-specific RAG engine, an AI mobile app, a regional MSME search platform, and a high-concurrency live-chat system for a state occasion.",
 };
 
 /** Headline numbers for the hero counter row. Derived, so they can never drift. */
@@ -151,6 +151,9 @@ export const marqueeRows: string[][] = [
     "Laravel",
     "React Native",
     "Expo",
+    "Docker",
+    "Node.js",
+    "Flask",
   ],
   [
     "PostgreSQL",
@@ -165,5 +168,10 @@ export const marqueeRows: string[][] = [
     "LLM",
     "VLM",
     "HNSW",
+    "Qdrant",
+    "PyTorch",
+    "TensorFlow",
+    "Scikit-Learn",
+    "NumPy",
   ],
 ];
