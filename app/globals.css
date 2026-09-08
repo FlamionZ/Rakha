@@ -28,8 +28,12 @@
   --font-sans: var(--ff-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--ff-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Radii. Deliberately tight — the previous pass rounded every surface to
-     16px, which is what made each section read as another soft card. */
+  /* Radii. Deliberately tight for structural surfaces — the previous pass
+     rounded every surface to 16px, which is what made each section read as
+     another soft card. Frames, thumbnails and status chips use these.
+     Clickable buttons are a separate case: at 3px on a 40-48px control the
+     corner reads as sharp rather than restrained, so those use Tailwind's
+     default `rounded-lg` (8px, untouched below) instead. */
   --radius-xs: 2px;
   --radius-sm: 3px;
   --radius-md: 5px;

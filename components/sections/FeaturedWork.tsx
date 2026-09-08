@@ -28,7 +28,7 @@ export function FeaturedWork() {
           aside={
             <Link
               href="/work"
-              className="group inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-mono text-xs text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
+              className="group inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-xs text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
             >
               {t(ui.sections.viewAll)}
               <span className="transition-transform duration-300 group-hover:translate-x-1">

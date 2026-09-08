@@ -26,7 +26,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="group mt-10 inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
+        className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
       >
         <span className="transition-transform duration-300 group-hover:-translate-x-1">
           &#8592;

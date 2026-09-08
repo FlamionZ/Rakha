@@ -72,7 +72,7 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
                     href={project.demo.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="group inline-flex items-center gap-2 rounded-sm px-5 py-2.5 font-mono text-sm font-semibold text-bg"
+                    className="group inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-mono text-sm font-semibold text-bg"
                     style={{ background: project.accent }}
                   >
                     {t(project.demo.label)}
@@ -83,7 +83,7 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
                 </Magnetic>
               ) : (
                 // Dead demo: state the fact, never link to a page that will not load.
-                <span className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-mono text-sm text-muted">
+                <span className="inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-muted">
                   {t(project.demo.label)}
                 </span>
               )}
@@ -94,7 +94,7 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
                   href={repo.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 font-mono text-sm text-fg transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                  className="group inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-fg transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
                 >
                   {repo.label}
                   <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
