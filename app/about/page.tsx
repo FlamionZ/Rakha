@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { AboutIntro } from "@/components/sections/AboutIntro";
-import { Capabilities } from "@/components/sections/Capabilities";
+import { Services } from "@/components/sections/Services";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { StackMarquee } from "@/components/sections/StackMarquee";
 
@@ -15,7 +15,7 @@ export default function AboutPage() {
     <>
       <AboutIntro />
       <StackMarquee />
-      <Capabilities />
+      <Services />
       <ContactCTA />
     </>
   );

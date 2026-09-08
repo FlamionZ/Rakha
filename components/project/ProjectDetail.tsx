@@ -8,6 +8,7 @@ import { TechIcon, hasTechIcon } from "@/components/tech/TechIcon";
 import type { Project } from "@/content/types";
 import { ui } from "@/content/ui";
 import { useLocale } from "@/lib/i18n";
+import { CaseStudyNarrative } from "./CaseStudyNarrative";
 import { StatusChip } from "./Badges";
 import { ProjectImage } from "./ProjectImage";
 import { ProjectNav } from "./ProjectNav";
@@ -63,6 +64,27 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
               {t(project.tagline)}
             </p>
           </Reveal>
+
+          {(project.context || project.metric) && (
+            <Reveal delay={0.15}>
+              <div className="mt-7 flex flex-wrap items-end gap-x-10 gap-y-4">
+                {project.context && (
+                  <p className="font-mono text-xs text-muted">{t(project.context)}</p>
+                )}
+                {project.metric && (
+                  <p className="flex items-baseline gap-2">
+                    <span
+                      className="font-display text-3xl font-bold leading-none tracking-tight"
+                      style={{ color: project.accent }}
+                    >
+                      {project.metric.value}
+                    </span>
+                    <span className="label">{t(project.metric.label)}</span>
+                  </p>
+                )}
+              </div>
+            </Reveal>
+          )}
 
           <Reveal delay={0.18}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -120,6 +142,18 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
             />
           </div>
         </Reveal>
+
+        {project.caseStudy && (
+          <div className="mb-20">
+            <Reveal>
+              <h2 className="label mb-8 flex items-center gap-3">
+                <span className="inline-block h-px w-8 bg-accent" aria-hidden="true" />
+                {t(ui.project.caseStudy)}
+              </h2>
+            </Reveal>
+            <CaseStudyNarrative caseStudy={project.caseStudy} />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-3">
           {/* Value engineering */}

@@ -45,6 +45,26 @@ export const projects: Project[] = [
     featured: true,
     accent: "#c6ff3d",
     image: "/projects/airon.webp",
+    context: { id: "Produk internal Astheron untuk pemilik toko ritel.", en: "An Astheron product for independent retail owners." },
+    metric: { value: "3×", label: { id: "Penanganan I/O backend", en: "Faster backend I/O" } },
+    caseStudy: {
+      problem: {
+        id: "Kasir toko mengetik ulang setiap faktur pemasok secara manual — pekerjaan berulang yang lambat, rawan salah ketik, dan membuat data stok tidak pernah benar-benar mutakhir. Pemilik usaha akhirnya mengambil keputusan harga dan restock berdasarkan tebakan, bukan angka.",
+        en: "Cashiers retype every supplier invoice by hand — slow, error-prone work that leaves stock data perpetually out of date. Owners end up making pricing and restocking decisions on guesswork rather than numbers.",
+      },
+      architecture: {
+        id: "Next.js di atas runtime Bun, dengan PostgreSQL sebagai sumber kebenaran transaksi dan Redis menahan agregat yang paling sering dibaca. Dua jalur AI berjalan terpisah: VLM menangani pemindaian faktur multimodal pada saat input, sementara LLM membaca tren transaksi yang sudah di-cache untuk menyusun ringkasan analitik — sehingga inferensi berat tidak pernah memblokir alur kasir.",
+        en: "Next.js on the Bun runtime, with PostgreSQL as the transactional source of truth and Redis holding the aggregates that are read most often. Two AI paths run separately: a VLM handles multimodal invoice scanning at input time, while an LLM reads the cached transaction trends to compose analytics summaries — so heavy inference never blocks the cashier flow.",
+      },
+      challenge: {
+        id: "Struk dan faktur pemasok tidak punya format baku: tata letak, posisi diskon, dan penamaan item berbeda di tiap vendor. OCR baris-per-baris gagal di sini. VLM dipakai justru karena ia membaca tata letak secara visual — memahami bahwa satu angka adalah harga karena posisinya, bukan karena polanya cocok.",
+        en: "Supplier receipts have no standard format: layout, discount placement and item naming differ per vendor. Line-by-line OCR breaks on this. A VLM is used precisely because it reads layout visually — understanding that a figure is a price because of where it sits, not because it matched a pattern.",
+      },
+      outcome: {
+        id: "Input faktur berpindah dari pengetikan manual ke pemindaian instan, dan pemilik usaha menerima ringkasan harian, proyeksi stok menipis, serta saran strategi harga tanpa perlu meminta laporan. Runtime Bun menjaga penanganan I/O backend hingga 3× lebih cepat dibanding runtime Node konvensional.",
+        en: "Invoice entry moved from manual typing to instant scanning, and owners receive daily summaries, low-stock projections and pricing suggestions without requesting a report. The Bun runtime keeps backend I/O handling up to 3× faster than conventional Node.",
+      },
+    },
   },
 
   {
@@ -100,6 +120,25 @@ export const projects: Project[] = [
     featured: true,
     accent: "#4de8ff",
     image: "/projects/aron.webp",
+    context: { id: "Dibangun bersama tim untuk iliterate.ai.", en: "Built with a team for iliterate.ai." },
+    caseStudy: {
+      problem: {
+        id: "Tim dukungan menjawab pertanyaan yang sama berulang kali di WhatsApp, sementara jawabannya sudah tertulis di dokumen operasional yang tidak pernah dibuka pelanggan. Chatbot berbasis skrip gagal karena pertanyaan nyata jarang mengikuti alur yang disiapkan.",
+        en: "Support teams answer the same WhatsApp questions over and over, while the answers already sit in operational documents no customer ever opens. Script-based bots fail because real questions rarely follow the flow you prepared for.",
+      },
+      architecture: {
+        id: "Docling mengekstrak dokumen operasional yang kompleks menjadi teks yang mempertahankan hierarki; potongan itu di-embed dan disimpan sebagai vektor di pgvector, di dalam PostgreSQL yang sama dengan data operasional — tidak ada database vektor terpisah untuk disinkronkan. Redis menahan state percakapan, dan modul VLM menangani lampiran gambar yang dikirim pelanggan.",
+        en: "Docling extracts complex operational documents into text that preserves hierarchy; those chunks are embedded and stored as vectors in pgvector, inside the same PostgreSQL that holds operational data — no separate vector database to keep in sync. Redis holds conversation state, and a VLM module handles the image attachments customers send.",
+      },
+      challenge: {
+        id: "Dokumen operasional penuh tabel dan bagan. Parser PDF biasa meratakannya menjadi teks berurutan, sehingga sebuah angka kehilangan baris dan kolomnya — dan RAG kemudian mengutipnya dengan percaya diri tetapi salah. Docling dipilih justru untuk mempertahankan struktur itu saat dokumen dipecah menjadi chunk.",
+        en: "Operational documents are full of tables and charts. Ordinary PDF parsers flatten them into sequential text, so a figure loses its row and column — and RAG then cites it confidently and wrongly. Docling was chosen specifically to preserve that structure when documents are split into chunks.",
+      },
+      outcome: {
+        id: "Bot menjawab pertanyaan pelanggan langsung dari dokumen perusahaan, dengan pencarian semantik berlatensi rendah dan jawaban yang terikat pada sumber alih-alih dikarang. Bukti transfer dan foto komplain dikenali otomatis tanpa perlu diteruskan ke manusia.",
+        en: "The bot answers customer questions straight from company documents, with low-latency semantic search and answers grounded in sources rather than invented. Transfer receipts and complaint photos are recognised automatically without being escalated to a human.",
+      },
+    },
   },
 
   {
@@ -162,6 +201,25 @@ export const projects: Project[] = [
     featured: true,
     accent: "#7c6bff",
     image: "/projects/proteron.webp",
+    context: { id: "CRM enterprise untuk industri asuransi, dibangun di Astheron Technologies.", en: "An enterprise CRM for the insurance industry, built at Astheron Technologies." },
+    caseStudy: {
+      problem: {
+        id: "Agen asuransi kehilangan waktu mencari satu klausul di dokumen polis ratusan halaman, dan tim underwriting memverifikasi berkas klaim satu per satu secara manual. Keduanya adalah pekerjaan membaca — dan keduanya memperlambat penutupan polis.",
+        en: "Insurance agents lose time hunting a single clause across hundreds of pages of policy documents, and underwriting teams verify claim files by hand, one at a time. Both are reading work — and both slow down closing a policy.",
+      },
+      architecture: {
+        id: "Dua runtime dengan tanggung jawab berbeda. NestJS (TypeScript) memegang logika operasional CRM — pipeline, lead, polis — tempat konsistensi transaksional menentukan. FastAPI (Python) memegang komputasi dokumen AI, tempat ekosistem library-nya jauh lebih matang. PostgreSQL dengan pgvector melayani pencarian semantik polis, dan Redis menjadi lapisan cache di antara keduanya.",
+        en: "Two runtimes with different responsibilities. NestJS (TypeScript) owns CRM operational logic — pipeline, leads, policies — where transactional consistency decides correctness. FastAPI (Python) owns AI document computation, where the library ecosystem is far more mature. PostgreSQL with pgvector serves semantic policy search, and Redis sits between the two as the cache layer.",
+      },
+      challenge: {
+        id: "Memisahkan dua runtime hanya berharga jika batasnya ditarik di tempat yang benar. Komputasi dokumen AI berjalan lama dan sulit diprediksi, sementara operasi CRM harus tetap responsif — menjalankan keduanya dalam satu proses berarti satu berkas klaim yang berat bisa membuat seluruh pipeline agen tersendat.",
+        en: "Splitting two runtimes only pays off if the boundary is drawn in the right place. AI document computation is long-running and hard to predict, while CRM operations must stay responsive — running both in one process means a single heavy claim file can stall the entire agent pipeline.",
+      },
+      outcome: {
+        id: "Agen menemukan pasal polis, klausul pengecualian, dan komparasi paket proteksi dalam hitungan detik lewat agen berbasis RAG, sementara verifikasi klaim medis dan berkas identitas berjalan otomatis lewat OCR dan VLM — dengan beban berat itu terisolasi dari operasi CRM harian.",
+        en: "Agents find policy articles, exclusion clauses and coverage comparisons in seconds through a RAG-based agent, while medical claim and identity verification runs automatically through OCR and VLM — with that heavy work isolated from day-to-day CRM operations.",
+      },
+    },
   },
 
   {
@@ -213,6 +271,25 @@ export const projects: Project[] = [
     featured: true,
     accent: "#3dffb0",
     image: "/projects/hikmah-ai.webp",
+    context: { id: "Riset skripsi — arsitektur RAG untuk domain pengetahuan keislaman.", en: "Thesis research — a RAG architecture for the Islamic knowledge domain." },
+    caseStudy: {
+      problem: {
+        id: "Pertanyaan keagamaan dijawab oleh model umum yang tidak mengetahui batas pengetahuannya sendiri. Pada hukum Islam, jawaban yang terdengar meyakinkan tetapi tidak berdasar bukan sekadar keliru — ia menyesatkan orang yang bertanya dengan sungguh-sungguh.",
+        en: "Religious questions get answered by general models that do not know the limits of their own knowledge. In Islamic jurisprudence, an answer that sounds confident but has no basis is not merely wrong — it misleads someone who asked in earnest.",
+      },
+      architecture: {
+        id: "Arsitektur RAG yang membatasi sintesis jawaban hanya pada rujukan primer tepercaya. Docling mem-parsing literatur digital multibahasa Arab–Indonesia; pgvector di dalam PostgreSQL menyimpan embedding-nya dengan indexing HNSW untuk penelusuran kemiripan; runtime Bun menjalankan lapisan aplikasi Next.js.",
+        en: "A RAG architecture that constrains answer synthesis strictly to trusted primary references. Docling parses multilingual Arabic–Indonesian digital literature; pgvector inside PostgreSQL stores the embeddings with HNSW indexing for similarity search; the Bun runtime runs the Next.js application layer.",
+      },
+      challenge: {
+        id: "Kitab bukan prosa biasa. Penomoran bab, pasal hukum, dan rujukan sanad/matan adalah bagian dari maknanya — jika chunking memutus hubungan itu, sebuah pendapat bisa terlepas dari syarat yang membatasinya dan berubah arti sepenuhnya. Docling dipakai agar struktur itu tetap utuh saat dokumen dipecah.",
+        en: "A kitab is not ordinary prose. Chapter numbering, legal articles and sanad/matan references are part of its meaning — if chunking severs that link, a ruling can come loose from the conditions that qualify it and change meaning entirely. Docling keeps that structure intact when documents are split.",
+      },
+      outcome: {
+        id: "Penelusuran kemiripan semantik terhadap ribuan dokumen rujukan berjalan dalam hitungan milidetik lewat indexing HNSW, dan jawaban tetap terikat pada rujukan primer — model tidak diizinkan mengisi kekosongan dengan tebakan.",
+        en: "Semantic similarity search across thousands of reference documents runs in milliseconds through HNSW indexing, and answers stay bound to primary references — the model is not permitted to fill gaps with guesses.",
+      },
+    },
   },
 
   {
@@ -262,6 +339,25 @@ export const projects: Project[] = [
     featured: true,
     accent: "#ffb53d",
     image: "/projects/assistary.webp",
+    context: { id: "Produk internal Astheron untuk tim yang rapat sepanjang hari.", en: "An internal Astheron product for teams that spend the day in meetings." },
+    caseStudy: {
+      problem: {
+        id: "Notulen ditulis manual oleh peserta yang seharusnya ikut berpikir, bukan mengetik. Hasilnya datang terlambat, tidak konsisten antar rapat, dan kehilangan bagian yang paling menentukan: siapa berjanji melakukan apa, dan kapan.",
+        en: "Minutes get written by hand by the person who should be thinking, not typing. The result arrives late, reads differently from meeting to meeting, and loses the part that decides everything: who committed to what, and by when.",
+      },
+      architecture: {
+        id: "Next.js dan NestJS menangani aplikasi dan API, dengan microservice Python untuk pemrosesan audio. Rekaman masuk ke Redis queue dan diproses di latar belakang — transkripsi dengan identifikasi pembicara lebih dahulu, lalu LLM mengekstrak keputusan dan action item dari transkrip yang sudah terstruktur.",
+        en: "Next.js and NestJS handle the app and API, with a Python microservice for audio processing. Recordings enter a Redis queue and are processed in the background — transcription with speaker identification first, then an LLM extracts decisions and action items from the already-structured transcript.",
+      },
+      challenge: {
+        id: "File audio rapat berukuran besar dan lama diproses. Menjalankannya di dalam siklus request berarti pengguna menunggu di layar kosong sampai request habis waktu — sehingga pemrosesan harus asinkron sejak rancangan awal, bukan dioptimasi setelah masalahnya muncul.",
+        en: "Meeting audio files are large and slow to process. Running that inside the request cycle means the user waits on a blank screen until the request times out — so processing had to be asynchronous from the initial design, not optimised in after the problem appeared.",
+      },
+      outcome: {
+        id: "Rekaman rapat menjadi notulen terstruktur dengan identifikasi pembicara, lengkap dengan daftar action item, penanggung jawab, dan tenggat waktu — diekstraksi otomatis alih-alih diketik ulang.",
+        en: "Meeting recordings become structured minutes with speaker identification, complete with action items, owners and deadlines — extracted automatically rather than retyped.",
+      },
+    },
   },
 
   {
@@ -316,6 +412,7 @@ export const projects: Project[] = [
     status: "local",
     featured: false,
     accent: "#ff6bd6",
+    context: { id: "Aplikasi mobile pendamping Assistary.AI.", en: "The mobile companion to Assistary.AI." },
   },
 
   {
@@ -355,6 +452,7 @@ export const projects: Project[] = [
     featured: false,
     accent: "#ff4d4d",
     image: "/projects/focaron.webp",
+    context: { id: "Produk internal Astheron untuk pusat fotokopi dan percetakan.", en: "An internal Astheron product for copy and print centres." },
   },
 
   {
@@ -404,6 +502,8 @@ export const projects: Project[] = [
     featured: false,
     accent: "#4d9fff",
     image: "/projects/soraumkm.webp",
+    context: { id: "Riset skripsi — direktori UMKM Solo Raya.", en: "Thesis research — an MSME directory for Solo Raya." },
+    metric: { value: "<50ms", label: { id: "Pencarian search-as-you-type", en: "Search-as-you-type latency" } },
   },
 
   {
@@ -447,6 +547,8 @@ export const projects: Project[] = [
     featured: false,
     accent: "#ff4d6d",
     image: "/projects/wedding-livechat.webp",
+    context: { id: "Platform live-chat untuk hajatan tokoh kenegaraan.", en: "A live-chat platform for a head-of-state occasion." },
+    metric: { value: "1000s", label: { id: "Pesan serentak", en: "Concurrent messages" } },
   },
 
   {
@@ -489,6 +591,8 @@ export const projects: Project[] = [
     featured: false,
     accent: "#5cd6a8",
     image: "/projects/yumna-villa-dieng.webp",
+    context: { id: "Platform direct-booking untuk klien hospitality.", en: "A direct-booking platform for a hospitality client." },
+    metric: { value: "<1s", label: { id: "Waktu muat halaman", en: "Page load" } },
   },
 
   {
@@ -528,6 +632,8 @@ export const projects: Project[] = [
     featured: false,
     accent: "#e6eaf2",
     image: "/projects/astheron-portal.webp",
+    context: { id: "Portal resmi Astheron Technologies.", en: "The official Astheron Technologies portal." },
+    metric: { value: "0", label: { id: "Cold-start latency", en: "Cold-start latency" } },
   },
 ];
 

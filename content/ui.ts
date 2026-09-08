@@ -16,6 +16,7 @@ export const ui = {
 
   hero: {
     available: { id: "Terbuka untuk proyek baru", en: "Open to new projects" },
+    at: { id: "di", en: "at" },
     lead: { id: "Membangun", en: "I build" },
     viewWork: { id: "Lihat Karya", en: "View Work" },
     scrollDown: { id: "Gulir ke bawah", en: "Scroll down" },
@@ -31,8 +32,12 @@ export const ui = {
     },
     viewAll: { id: "Lihat semua 11 proyek", en: "View all 11 projects" },
 
-    capabilitiesLabel: { id: "Pilar Keahlian", en: "Capability Pillars" },
-    capabilitiesTitle: { id: "Apa yang saya bawa", en: "What I bring" },
+    servicesLabel: { id: "Layanan", en: "Services" },
+    servicesTitle: {
+      id: "Yang bisa saya bangun",
+      en: "What I can build for you",
+    },
+    servicesProof: { id: "Buktinya", en: "Proof" },
 
     statsLabel: { id: "Rekapitulasi", en: "By the numbers" },
 
@@ -59,6 +64,10 @@ export const ui = {
     next: { id: "Berikutnya", en: "Next" },
     noPreview: { id: "Pratinjau tidak tersedia", en: "No preview available" },
     caseStudy: { id: "Studi Kasus", en: "Case Study" },
+    problem: { id: "Masalahnya", en: "The problem" },
+    architecture: { id: "Arsitektur", en: "Architecture" },
+    challenge: { id: "Bagian Tersulit", en: "The hard part" },
+    outcome: { id: "Hasil", en: "Outcome" },
   },
 
   filter: {
@@ -80,6 +89,7 @@ export const ui = {
     email: { id: "Kirim Email", en: "Send Email" },
     whatsapp: { id: "WhatsApp", en: "WhatsApp" },
     copy: { id: "Salin email", en: "Copy email" },
+    downloadCv: { id: "Unduh CV", en: "Download CV" },
     copied: { id: "Tersalin", en: "Copied" },
   },
 

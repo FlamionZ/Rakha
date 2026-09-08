@@ -17,7 +17,20 @@ export const site = {
   github: "https://github.com/FlamionZ",
   linkedin: "https://linkedin.com/in/muhrakabi",
   url: "https://rakha.dev",
+  /** Where he builds. Surfaced in the hero and footer as a credibility signal. */
+  company: {
+    name: "Astheron Technologies",
+    url: "https://astheron.my.id/",
+  },
 } as const;
+
+/**
+ * Downloadable CV.
+ *
+ * Left null deliberately: a button that 404s is worse than no button. Drop a
+ * PDF at /public/cv.pdf and set this to "/cv.pdf" — nothing else changes.
+ */
+export const cvPath: string | null = null;
 
 export const summary: LocalizedText = {
   id: "Fullstack Engineer dengan keahlian khusus merancang sistem web modern berlatensi rendah serta mengintegrasikan kapabilitas Artificial Intelligence — LLM, Vision Language Model, RAG, dan Vector Search — ke dalam aplikasi produksi.",
@@ -55,43 +68,73 @@ export const stats = [
   },
 ];
 
-/** The three value pillars from the portfolio's summary table. */
-export const capabilities = [
-  {
-    id: "fullstack",
-    accent: "#c6ff3d",
-    title: { id: "Fullstack Web & Mobile", en: "Fullstack Web & Mobile" } satisfies LocalizedText,
-    body: {
-      id: "Menguasai ekosistem React/Next.js modern, runtime Bun, mobile via React Native Expo dengan TanStack Query & Zustand, serta arsitektur backend kokoh menggunakan NestJS, Express.js, dan Laravel.",
-      en: "Fluent across the modern React/Next.js ecosystem, the Bun runtime, mobile via React Native Expo with TanStack Query and Zustand, plus solid backend architecture in NestJS, Express.js and Laravel.",
-    } satisfies LocalizedText,
-    keywords: ["Next.js", "React Native", "NestJS", "Express.js", "Laravel", "Bun"],
-  },
+/**
+ * What he can be hired to build.
+ *
+ * Each service names a project that already demonstrates it — a claim with
+ * evidence attached reads very differently from a skills list, and every
+ * `proof` slug resolves to a real case study on this site.
+ */
+export const services = [
   {
     id: "ai",
     accent: "#4de8ff",
     title: {
-      id: "AI Siap Produksi",
-      en: "AI Ready-for-Production",
+      id: "Sistem AI untuk Produksi",
+      en: "AI Systems That Reach Production",
     } satisfies LocalizedText,
     body: {
-      id: "Bukan sekadar prompting — melainkan implementasi RAG berbasis pgvector, integrasi OCR/VLM untuk parsing visual, pemrosesan dokumen kompleks via Docling, dan orkestrasi microservice FastAPI.",
-      en: "Not just prompting — pgvector-backed RAG implementations, OCR and VLM integration for visual parsing, complex document processing through Docling, and FastAPI microservice orchestration.",
+      id: "Bukan sekadar prompting. Pipeline RAG berbasis pgvector, parsing dokumen kompleks lewat Docling agar struktur tabel dan hierarki tidak hilang saat di-chunk, OCR/VLM untuk berkas visual, serta orkestrasi microservice yang menjaga inferensi berat tidak memblokir alur pengguna.",
+      en: "Not prompting. pgvector-backed RAG pipelines, complex document parsing through Docling so tables and hierarchy survive chunking, OCR and VLM for visual files, and microservice orchestration that keeps heavy inference from blocking the user flow.",
     } satisfies LocalizedText,
-    keywords: ["RAG", "pgvector", "VLM", "Docling", "FastAPI", "HNSW"],
+    keywords: ["RAG", "pgvector", "Docling", "VLM", "FastAPI", "HNSW"],
+    proof: {
+      slug: "proteron",
+      note: {
+        id: "CRM asuransi dengan copilot polis dan verifikasi klaim otomatis",
+        en: "An insurance CRM with a policy copilot and automated claim verification",
+      } satisfies LocalizedText,
+    },
+  },
+  {
+    id: "fullstack",
+    accent: "#c6ff3d",
+    title: {
+      id: "Produk Fullstack End-to-End",
+      en: "End-to-End Fullstack Products",
+    } satisfies LocalizedText,
+    body: {
+      id: "Dari skema database sampai antarmuka yang dipakai kasir setiap hari. React/Next.js dan runtime Bun di depan, NestJS, Express.js, atau Laravel di belakang, PostgreSQL dan Redis sebagai fondasi data, serta React Native Expo ketika produknya perlu hidup di ponsel.",
+      en: "From database schema to the interface a cashier uses all day. React/Next.js and the Bun runtime at the front, NestJS, Express.js or Laravel behind it, PostgreSQL and Redis as the data foundation, and React Native Expo when the product needs to live on a phone.",
+    } satisfies LocalizedText,
+    keywords: ["Next.js", "NestJS", "Bun", "PostgreSQL", "React Native", "Laravel"],
+    proof: {
+      slug: "airon",
+      note: {
+        id: "POS AI-native dengan pemindaian faktur dan analitik otonom",
+        en: "An AI-native POS with invoice scanning and autonomous analytics",
+      } satisfies LocalizedText,
+    },
   },
   {
     id: "scale",
     accent: "#ff4d6d",
     title: {
-      id: "Search Engine & Skalabilitas Data",
-      en: "Search Engine & Data Scalability",
+      id: "Search & Sistem Berkonkurensi Tinggi",
+      en: "Search & High-Concurrency Systems",
     } satisfies LocalizedText,
     body: {
-      id: "Implementasi dedicated search engine berlatensi rendah menggunakan Meilisearch pada SoraUMKM, penanganan traffic spike pada event kenegaraan, serta caching layer menggunakan Redis.",
-      en: "A dedicated low-latency search engine built on Meilisearch for SoraUMKM, traffic-spike handling at a state event, and Redis caching layers throughout.",
+      id: "Ketika jumlah data atau jumlah pengguna menjadi masalahnya. Dedicated search engine dengan typo-tolerance dan latensi di bawah 50ms, lapisan caching Redis, indexing agresif, dan sistem real-time yang sudah diuji pada lonjakan trafik sungguhan.",
+      en: "For when the data volume or the user count is the problem. A dedicated search engine with typo tolerance and sub-50ms latency, Redis caching layers, aggressive indexing, and real-time systems already proven against a genuine traffic surge.",
     } satisfies LocalizedText,
-    keywords: ["Meilisearch", "Redis", "PostgreSQL", "MongoDB", "MySQL", "SQLite"],
+    keywords: ["Meilisearch", "Redis", "PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+    proof: {
+      slug: "wedding-livechat",
+      note: {
+        id: "Ribuan pesan serentak pada hajatan tokoh kenegaraan",
+        en: "Thousands of concurrent messages at a head-of-state occasion",
+      } satisfies LocalizedText,
+    },
   },
 ];
 

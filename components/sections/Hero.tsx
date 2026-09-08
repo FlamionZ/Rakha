@@ -40,7 +40,24 @@ export function Hero() {
       {/* The name centres in whatever space the tagline leaves.
           The reference pins both absolutely, which would collide on a
           landscape phone — short viewport, but vw-based type stays large. */}
-      <div className="flex flex-1 items-center justify-center">
+      <div className="flex flex-1 flex-col items-center justify-center">
+        {/* Answers "who is this and what do they do" before the name lands —
+            a name-only hero looks like a designer's, not an engineer's. */}
+        <p className="mb-8 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-muted sm:text-xs">
+          <span>{t(site.role)}</span>
+          <span className="text-faint" aria-hidden="true">
+            &middot;
+          </span>
+          <a
+            href={site.company.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-fg transition-colors duration-300 hover:text-accent"
+          >
+            {site.company.name}
+          </a>
+        </p>
+
         <div className="relative">
           <h1 className="text-center font-mono text-[18vw] font-bold uppercase leading-[0.78] tracking-[-0.04em] text-accent 2xl:text-[13rem]">
             {NAME_LINES.map((line, lineIndex) => (

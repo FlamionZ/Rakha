@@ -2,7 +2,7 @@
 
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Reveal } from "@/components/motion/Reveal";
-import { site } from "@/content/site";
+import { cvPath, site } from "@/content/site";
 import { ui } from "@/content/ui";
 import { useCopyToClipboard } from "@/lib/hooks";
 import { useLocale } from "@/lib/i18n";
@@ -71,6 +71,30 @@ export function ContactCTA() {
                   {t(ui.contact.whatsapp)}
                 </a>
               </Magnetic>
+
+              {cvPath && (
+                <Magnetic strength={0.3}>
+                  <a
+                    href={cvPath}
+                    download
+                    className="group inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 font-mono text-sm text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
+                  >
+                    {t(ui.contact.downloadCv)}
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-y-0.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.7}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                    </svg>
+                  </a>
+                </Magnetic>
+              )}
             </div>
 
             <button

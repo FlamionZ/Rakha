@@ -1,4 +1,4 @@
-import { Capabilities } from "@/components/sections/Capabilities";
+import { Services } from "@/components/sections/Services";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { Hero } from "@/components/sections/Hero";
@@ -12,7 +12,7 @@ export default function HomePage() {
       <StatsBar />
       <StackMarquee />
       <FeaturedWork />
-      <Capabilities />
+      <Services />
       <ContactCTA />
     </>
   );
