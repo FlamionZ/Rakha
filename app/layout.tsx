@@ -73,10 +73,17 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="id" className="dark">
-      <body
-        className={`${display.variable} ${sans.variable} ${mono.variable} grain antialiased`}
-      >
+    // The font variables MUST live on <html>, not <body>. Tailwind's @theme
+    // declares --font-sans/-mono/-display on :root, and a custom property's
+    // var() references resolve on the element where that property is declared.
+    // With --ff-* defined only on <body> (a descendant), those lookups fail at
+    // :root, --font-* computes to guaranteed-invalid, and font-family silently
+    // falls back to the browser default — no custom font anywhere on the site.
+    <html
+      lang="id"
+      className={`dark ${display.variable} ${sans.variable} ${mono.variable}`}
+    >
+      <body className="grain antialiased">
         <span id="top" aria-hidden="true" />
         <LocaleProvider>
           <SmoothScroll>

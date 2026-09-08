@@ -18,6 +18,7 @@ export const ui = {
     available: { id: "Terbuka untuk proyek baru", en: "Open to new projects" },
     lead: { id: "Membangun", en: "I build" },
     viewWork: { id: "Lihat Karya", en: "View Work" },
+    scrollDown: { id: "Gulir ke bawah", en: "Scroll down" },
     getInTouch: { id: "Hubungi Saya", en: "Get in Touch" },
   },
 

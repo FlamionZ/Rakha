@@ -16,7 +16,7 @@ export function StatsBar() {
   const { t } = useLocale();
 
   return (
-    <section className="px-5 py-12 sm:px-8 sm:py-14">
+    <section id="overview" className="scroll-mt-24 px-5 py-12 sm:px-8 sm:py-14">
       <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
         {stats.map((stat, i) => (
           <Reveal key={stat.label.en} delay={i * 0.06}>

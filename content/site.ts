@@ -24,6 +24,12 @@ export const summary: LocalizedText = {
   en: "Fullstack engineer specialising in low-latency modern web systems and in shipping real Artificial Intelligence capability — LLMs, Vision Language Models, RAG and vector search — into production applications.",
 };
 
+/** One line under the name in the hero. Concrete, not a slogan. */
+export const tagline: LocalizedText = {
+  id: "Merancang sistem web dan AI yang benar-benar dipakai.",
+  en: "Designing web and AI systems people actually use.",
+};
+
 export const summaryLong: LocalizedText = {
   id: "Berpengalaman merancang dan mengimplementasikan 11 produk perangkat lunak lintas skala — mulai dari arsitektur microservices untuk enterprise CRM, sistem AI-native POS multimodal, engine RAG domain spesifik, aplikasi mobile AI, search engine platform UMKM regional, hingga penanganan sistem live-chat berkonkurensi tinggi pada event kenegaraan.",
   en: "I have designed and shipped 11 software products across a wide range of scales — microservice architecture for an enterprise CRM, a multimodal AI-native POS, a domain-specific RAG engine, an AI mobile app, a regional MSME search platform, and a high-concurrency live-chat system for a state occasion.",

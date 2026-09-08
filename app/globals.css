@@ -314,33 +314,25 @@ html.custom-cursor button {
 }
 
 /* ============================================================
-   Entrance animations, CSS-driven.
-
-   The hero previously used JS-driven motion with `initial: opacity 0`,
-   which React serialises into the server-rendered markup — so if the
-   bundle failed or was slow, the page's largest heading rendered
-   invisible. These run from a stylesheet instead: no JS required, and
-   `both` fill-mode holds the final state once complete.
-
-   Under reduced-motion the global rule above collapses the duration,
-   and fill-mode lands them on the finished frame immediately.
+   Blur-in entrance — letters resolve out of a defocus.
+   CSS rather than JS because this drives the page's h1: React
+   serialises a JS `opacity: 0` into the server markup, which leaves
+   the headline invisible if the bundle never arrives.
    ============================================================ */
-@keyframes rise-in {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: none; }
+@keyframes blur-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
 }
 
-.rise-in {
-  animation: rise-in 0.8s var(--ease-out-expo) both;
-  animation-delay: var(--rise-delay, 0s);
-}
-
-@keyframes pull-up {
-  from { opacity: 0; transform: translateY(0.4em); }
-  to { opacity: 1; transform: none; }
-}
-
-.pull-up-unit {
-  animation: pull-up 0.7s var(--ease-out-expo) both;
-  animation-delay: calc(var(--pull-delay, 0s) + var(--i, 0) * var(--pull-stagger, 0.07s));
+.blur-in-unit {
+  animation: blur-in 0.55s ease-out both;
+  animation-delay: calc(var(--blur-delay, 0s) + var(--i, 0) * var(--blur-stagger, 0.08s));
 }
