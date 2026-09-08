@@ -26,7 +26,7 @@ export const experience: ExperienceEntry[] = [
     org: "Astheron Technologies",
     url: "https://astheron.my.id/",
     role: { id: "AI Engineer", en: "AI Engineer" },
-    period: { id: "November 2024 – Agustus 2026", en: "November 2024 – August 2026" },
+    period: { id: "November 2024 – Sekarang", en: "November 2024 – Present" },
     points: [
       {
         id: "Memimpin perancangan arsitektur sistem untuk aplikasi AI-native dan platform SaaS produksi secara end-to-end — dari PRD sampai deployment.",
