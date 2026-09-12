@@ -14,13 +14,13 @@ import { useLocale } from "@/lib/i18n";
  * footer of every case study feel bottom-heavy.
  */
 export function ProjectNav({ prev, next }: { prev?: Project; next?: Project }) {
-  const { t } = useLocale();
+  const { t, path } = useLocale();
 
   return (
     <nav className="grid grid-cols-1 border-t border-border sm:grid-cols-2">
       {prev && (
         <Link
-          href={`/work/${prev.slug}`}
+          href={path(`/work/${prev.slug}`)}
           className="group flex flex-col gap-1.5 border-b border-border py-7 pr-6 sm:border-r"
           style={{ ["--accent" as string]: prev.accent }}
         >
@@ -39,7 +39,7 @@ export function ProjectNav({ prev, next }: { prev?: Project; next?: Project }) {
 
       {next && (
         <Link
-          href={`/work/${next.slug}`}
+          href={path(`/work/${next.slug}`)}
           className="group flex flex-col items-start gap-1.5 border-b border-border py-7 sm:items-end sm:pl-6 sm:text-right"
           style={{ ["--accent" as string]: next.accent }}
         >

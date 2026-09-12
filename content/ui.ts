@@ -60,7 +60,7 @@ export const ui = {
     overview: { id: "Ikhtisar", en: "Overview" },
     stack: { id: "Teknologi", en: "Tech Stack" },
     aiPipeline: { id: "Pipeline AI", en: "AI Pipeline" },
-    highlights: { id: "Value Engineering", en: "Value Engineering" },
+    highlights: { id: "Keputusan Teknis", en: "Engineering Decisions" },
     sourceCode: { id: "Kode Sumber", en: "Source Code" },
     links: { id: "Tautan", en: "Links" },
     backToWork: { id: "Kembali ke Karya", en: "Back to Work" },

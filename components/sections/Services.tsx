@@ -16,7 +16,7 @@ import { useLocale } from "@/lib/i18n";
  * A skills list asks to be believed; a claim with evidence attached does not.
  */
 export function Services() {
-  const { t } = useLocale();
+  const { t, path } = useLocale();
 
   return (
     <section id="services" className="scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
@@ -65,7 +65,7 @@ export function Services() {
                     {/* The claim, with evidence attached */}
                     {proofProject && (
                       <Link
-                        href={`/work/${proofProject.slug}`}
+                        href={path(`/work/${proofProject.slug}`)}
                         className="group/proof mt-7 flex items-start gap-3 border-l-2 pl-4 transition-colors duration-300"
                         style={{ borderColor: service.accent }}
                       >

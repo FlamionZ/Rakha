@@ -6,7 +6,7 @@ import { ui } from "@/content/ui";
 import { useLocale } from "@/lib/i18n";
 
 export default function NotFound() {
-  const { t } = useLocale();
+  const { t, path } = useLocale();
 
   return (
     <section className="flex min-h-[80svh] flex-col items-center justify-center px-5 py-32 text-center sm:px-8">
@@ -25,7 +25,7 @@ export default function NotFound() {
       </p>
 
       <Link
-        href="/"
+        href={path("/")}
         className="group mt-10 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 font-mono text-sm font-semibold text-bg transition-shadow duration-300 hover:shadow-[0_0_32px_rgba(198,255,61,0.45)]"
       >
         <span className="transition-transform duration-300 group-hover:-translate-x-1">

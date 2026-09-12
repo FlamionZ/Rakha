@@ -19,7 +19,14 @@ const DETAILS: Detail[] = [
   { label: { id: "Peran", en: "Role" }, value: site.role },
   { label: { id: "Lokasi", en: "Location" }, value: site.location },
   { label: { id: "Email", en: "Email" }, value: site.email, href: `mailto:${site.email}` },
-  { label: { id: "Telepon", en: "Phone" }, value: site.phone, href: `https://wa.me/${site.whatsapp}` },
+  // The number itself is deliberately not rendered. It reached the same
+  // wa.me link either way, so printing it only left a phone number in the
+  // markup for scrapers to lift.
+  {
+    label: { id: "WhatsApp", en: "WhatsApp" },
+    value: { id: "Kirim pesan", en: "Send a message" },
+    href: `https://wa.me/${site.whatsapp}`,
+  },
   { label: { id: "GitHub", en: "GitHub" }, value: "github.com/FlamionZ", href: site.github },
   { label: { id: "LinkedIn", en: "LinkedIn" }, value: "in/muhrakabi", href: site.linkedin },
 ];

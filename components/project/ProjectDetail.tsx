@@ -20,7 +20,7 @@ interface ProjectDetailProps {
 }
 
 export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
-  const { t } = useLocale();
+  const { t, path } = useLocale();
 
   return (
     <article
@@ -30,7 +30,7 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
       <div className="mx-auto max-w-5xl">
         <Reveal direction="none">
           <Link
-            href="/work"
+            href={path("/work")}
             className="group mb-12 inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-accent"
           >
             <span className="transition-transform duration-300 group-hover:-translate-x-1">

@@ -37,7 +37,7 @@ const STATUS_DOT: Record<Project["status"], string> = {
  * the row itself stays typographic.
  */
 export function ProjectIndex() {
-  const { t } = useLocale();
+  const { t, path } = useLocale();
   const reduced = usePrefersReducedMotion();
   const fine = useFinePointer();
   const [active, setActive] = useState<Filter>("all");
@@ -130,7 +130,7 @@ export function ProjectIndex() {
               className="border-b border-border"
             >
               <Link
-                href={`/work/${project.slug}`}
+                href={path(`/work/${project.slug}`)}
                 onPointerEnter={(event) => beginHover(project, event)}
                 onPointerMove={showPreview ? trackPointer : undefined}
                 className="group relative flex items-center gap-4 py-5 transition-colors duration-300 sm:gap-6 sm:py-6 lg:grid lg:grid-cols-[2.5rem_15rem_minmax(0,1fr)_auto_9.5rem_1rem] lg:items-center lg:gap-x-6"

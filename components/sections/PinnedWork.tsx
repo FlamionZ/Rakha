@@ -36,7 +36,7 @@ const VH_PER_SLIDE = 85;
  * state below simply stops mattering.
  */
 export function PinnedWork() {
-  const { t } = useLocale();
+  const { t, path } = useLocale();
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const count = featuredProjects.length;
@@ -81,7 +81,7 @@ export function PinnedWork() {
 
           <Reveal delay={0.18} className="shrink-0">
             <Link
-              href="/work"
+              href={path("/work")}
               className="group inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-xs text-fg transition-colors duration-300 hover:border-accent hover:text-accent"
             >
               {t(ui.sections.viewAll)}
@@ -189,7 +189,7 @@ export function PinnedWork() {
                           <TechStrip names={project.stack} max={6} className="mt-7" />
 
                           <Link
-                            href={`/work/${project.slug}`}
+                            href={path(`/work/${project.slug}`)}
                             className="group mt-8 inline-flex items-center gap-2 font-mono text-sm text-fg transition-colors duration-300 hover:text-[var(--accent)]"
                           >
                             {t(ui.project.caseStudy)}
@@ -200,7 +200,7 @@ export function PinnedWork() {
                         </div>
 
                         <Link
-                          href={`/work/${project.slug}`}
+                          href={path(`/work/${project.slug}`)}
                           className="group relative block aspect-[2/1] w-full overflow-hidden rounded-sm border border-border bg-surface-2 transition-colors duration-500 hover:border-border-bright lg:col-span-7"
                           tabIndex={-1}
                           aria-hidden="true"

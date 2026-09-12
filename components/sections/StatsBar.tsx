@@ -19,13 +19,19 @@ export function StatsBar() {
     <section id="overview" className="scroll-mt-24 px-5 py-12 sm:px-8 sm:py-14">
       <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
         {stats.map((stat, i) => (
-          <Reveal key={stat.label.en} delay={i * 0.06}>
-            <div className="border-t border-border pt-4">
-              <dd className="font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-                <CountUp value={stat.value} />
-              </dd>
-              <dt className="label mt-1.5">{t(stat.label)}</dt>
-            </div>
+          // `dt` precedes `dd` because the spec requires that order inside a
+          // `dl > div` group; `flex-col-reverse` puts the number back on top
+          // visually. The old markup nested the pair two divs deep, which
+          // detached them from the <dl> for assistive tech.
+          <Reveal
+            key={stat.label.en}
+            delay={i * 0.06}
+            className="flex flex-col-reverse border-t border-border pt-4"
+          >
+            <dt className="label mt-1.5">{t(stat.label)}</dt>
+            <dd className="font-display text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+              <CountUp value={stat.value} />
+            </dd>
           </Reveal>
         ))}
       </dl>

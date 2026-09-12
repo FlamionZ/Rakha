@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { ui } from "@/content/ui";
 import { site } from "@/content/site";
 import { useLocale } from "@/lib/i18n";
+import { stripLocale } from "@/lib/locale";
 import { LocaleToggle } from "./LocaleToggle";
 import { Magnetic } from "@/components/motion/Magnetic";
 
@@ -18,7 +19,9 @@ const LINKS = [
 
 export function Nav() {
   const pathname = usePathname();
-  const { t } = useLocale();
+  // Nav hrefs are written locale-free and prefixed at render time.
+  const basePath = stripLocale(pathname);
+  const { t, path } = useLocale();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,7 +52,7 @@ export function Nav() {
 
   function isActive(href: string) {
     if (href.startsWith("/#")) return false;
-    return pathname === href || pathname.startsWith(`${href}/`);
+    return basePath === href || basePath.startsWith(`${href}/`);
   }
 
   return (
@@ -71,7 +74,7 @@ export function Nav() {
       >
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 sm:px-8">
           <Link
-            href="/"
+            href={path("/")}
             className="group -my-3 flex items-center gap-2 py-3 font-mono text-sm font-medium tracking-tight"
           >
             <span className="text-accent transition-transform duration-300 group-hover:translate-x-0.5">
@@ -86,7 +89,7 @@ export function Nav() {
               {LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={path(link.href)}
                     className={`relative rounded-sm px-3 py-2.5 font-mono text-xs tracking-wide transition-colors duration-200 ${
                       isActive(link.href) ? "text-accent" : "text-muted hover:text-fg"
                     }`}
@@ -156,7 +159,7 @@ export function Nav() {
                 transition={{ delay: 0.06 * i + 0.06, duration: 0.4 }}
               >
                 <Link
-                  href={link.href}
+                  href={path(link.href)}
                   className="display-md block py-2 text-fg transition-colors hover:text-accent"
                 >
                   <span className="mr-3 font-mono text-sm text-accent">

@@ -1,14 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import { notFound } from "next/navigation";
+import "../globals.css";
 import { BootSequence } from "@/components/layout/BootSequence";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import { Footer } from "@/components/layout/Footer";
 import { GridBackground } from "@/components/layout/GridBackground";
+import { JsonLd } from "@/components/layout/JsonLd";
 import { Nav } from "@/components/layout/Nav";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { site, summary } from "@/content/site";
 import { LocaleProvider } from "@/lib/i18n";
+import { isLocale, LOCALES } from "@/lib/locale";
+import { pageMetadata, personSchema, websiteSchema } from "@/lib/seo";
 
 // Variable names are --ff-* on purpose; see the note in globals.css.
 const display = Space_Grotesk({
@@ -31,47 +35,58 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} — ${site.role.en}`,
-    template: `%s — ${site.shortName}`,
-  },
-  description: summary.en,
-  keywords: [
-    "Fullstack Developer",
-    "AI Engineer",
-    "Next.js",
-    "RAG",
-    "pgvector",
-    "Vision Language Model",
-    "Indonesia",
-    site.name,
-  ],
-  authors: [{ name: site.name, url: site.github }],
-  creator: site.name,
-  openGraph: {
-    type: "website",
-    title: `${site.name} — ${site.role.en}`,
-    description: summary.en,
-    siteName: site.name,
-    locale: "id_ID",
-    alternateLocale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${site.name} — ${site.role.en}`,
-    description: summary.en,
-  },
-  robots: { index: true, follow: true },
-};
+/** Both languages are prerendered — neither is a runtime translation. */
+export function generateStaticParams() {
+  return LOCALES.map((lang) => ({ lang }));
+}
+
+export async function generateMetadata(
+  props: LayoutProps<"/[lang]">,
+): Promise<Metadata> {
+  const { lang } = await props.params;
+  if (!isLocale(lang)) return {};
+
+  return {
+    metadataBase: new URL(site.url),
+    title: {
+      default: `${site.name} — ${site.role[lang]}`,
+      template: `%s — ${site.shortName}`,
+    },
+    ...pageMetadata({
+      locale: lang,
+      path: "/",
+      title: `${site.name} — ${site.role[lang]}`,
+      description: summary[lang],
+    }),
+    keywords: [
+      "Fullstack Developer",
+      "AI Engineer",
+      "Next.js",
+      "RAG",
+      "pgvector",
+      "Vision Language Model",
+      "Indonesia",
+      site.name,
+    ],
+    authors: [{ name: site.name, url: site.github }],
+    creator: site.name,
+    robots: { index: true, follow: true },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#05060a",
   colorScheme: "dark",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({
+  children,
+  params,
+}: LayoutProps<"/[lang]">) {
+  const { lang } = await params;
+  // Anything other than a supported locale is not a page, not a fallback.
+  if (!isLocale(lang)) notFound();
+
   return (
     // The font variables MUST live on <html>, not <body>. Tailwind's @theme
     // declares --font-sans/-mono/-display on :root, and a custom property's
@@ -80,12 +95,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // :root, --font-* computes to guaranteed-invalid, and font-family silently
     // falls back to the browser default — no custom font anywhere on the site.
     <html
-      lang="id"
+      lang={lang}
       className={`dark ${display.variable} ${sans.variable} ${mono.variable}`}
     >
       <body className="grain antialiased">
+        <JsonLd data={personSchema(lang)} />
+        <JsonLd data={websiteSchema(lang)} />
         <span id="top" aria-hidden="true" />
-        <LocaleProvider>
+        <LocaleProvider locale={lang}>
           <SmoothScroll>
             <GridBackground />
             <CustomCursor />

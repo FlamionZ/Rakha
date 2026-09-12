@@ -342,6 +342,46 @@ html.custom-cursor button {
 }
 
 /* ============================================================
+   Scroll reveal.
+
+   Pure CSS via `animation-timeline: view()`. The visible state is the
+   DEFAULT and the animation is layered on top, which is the whole point:
+   the previous motion.div serialised `opacity: 0` into the server HTML at
+   all 36 call sites, so a disabled or failed bundle left the content
+   permanently transparent (/about shipped 22 invisible blocks — the entire
+   page body). Nothing here can fail that way; a browser without support for
+   scroll-driven timelines simply shows the content.
+
+   `both` fill is what reveals elements that are already on screen at load:
+   their entry range has already completed, so they sit at the `to` state.
+   ============================================================ */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--reveal-x, 0px), var(--reveal-y, 1.75rem), 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in 1s var(--ease-out-expo) both;
+      animation-timeline: view();
+      /* Deliberately a short window: `entry` completes only once the
+         element's far edge clears the viewport's near edge, which for a
+         block taller than the screen is a long scroll. Finishing early
+         keeps tall sections from revealing late. */
+      animation-range: entry calc(2% + var(--reveal-step, 0%)) entry
+        calc(34% + var(--reveal-step, 0%));
+    }
+  }
+}
+
+/* ============================================================
    Pinned work showcase.
 
    The pin is gated entirely in CSS rather than by a JS media-query
