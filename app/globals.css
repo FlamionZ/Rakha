@@ -340,3 +340,80 @@ html.custom-cursor button {
   animation: blur-in 0.55s ease-out both;
   animation-delay: calc(var(--blur-delay, 0s) + var(--i, 0) * var(--blur-stagger, 0.08s));
 }
+
+/* ============================================================
+   Pinned work showcase.
+
+   The pin is gated entirely in CSS rather than by a JS media-query
+   branch. A JS branch would have to choose between a multi-viewport
+   track and a plain list before it knows the viewport, so hydration
+   would swap layouts and jump the page. Here the server renders slide 0
+   active and everything else follows from media queries:
+
+   - below lg, or under reduced-motion: the track has natural height,
+     slides sit in normal flow, and every slide is visible. That IS
+     the fallback — no second component, no duplicate DOM.
+   - at lg with motion allowed: the track grows, the viewport sticks,
+     and slides stack so JS can cross-fade between them.
+   ============================================================ */
+/* Fallback spacing, and the stage's default presentation: a plain stacked
+   list. This uses grid + `gap` rather than sibling margins so the pin
+   override below is a single property at the SAME specificity. A media query
+   contributes no specificity of its own, so the sibling-margin version
+   (`.pin-stage > .pin-slide + .pin-slide`, 0-3-0) could not be overridden by
+   a `.pin-slide` rule (0-1-0) inside the query — it silently lost the
+   cascade and left every slide after the first offset by one gap. */
+.pin-stage {
+  display: grid;
+  gap: 5rem;
+}
+
+/* Slide counter + scrub bar. Only meaningful while the pin is engaged, and
+   gated by the same query rather than by stacked Tailwind variants, whose
+   emitted order relative to each other is not something to rely on. */
+.pin-scrub {
+  display: none;
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .pin-track {
+    height: var(--pin-track-height);
+  }
+
+  .pin-viewport {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100svh;
+    align-items: center;
+  }
+
+  .pin-scrub {
+    display: flex;
+  }
+
+  .pin-stage {
+    /* One row, so the fallback's row-gap no longer applies */
+    gap: 0;
+    width: 100%;
+  }
+
+  /* Every slide is placed in the SAME grid cell, which stacks them without
+     taking them out of flow. That matters: the stage then derives its height
+     intrinsically from the tallest slide, and every slide shares one origin.
+     Absolute positioning would collapse the stage to zero height and leave
+     the slides overflowing it, so both the centering and the scrub bar's
+     position would be accidental — and would need a magic min-height to look
+     deliberate. */
+  .pin-slide {
+    grid-area: 1 / 1;
+    /* Server-rendered per slide, so the first paint already shows only
+       slide 0 — no flash of all five stacked on top of each other. */
+    opacity: var(--slide-opacity, 1);
+    transition: opacity 0.55s var(--ease-out-expo);
+  }
+
+  .pin-slide[data-active="false"] {
+    pointer-events: none;
+  }
+}

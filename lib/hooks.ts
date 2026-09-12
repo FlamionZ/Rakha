@@ -38,6 +38,19 @@ export function useFinePointer(): boolean {
   return useMediaQuery("(pointer: fine)");
 }
 
+/**
+ * True exactly when the pinned work showcase is actually pinned.
+ *
+ * The query MUST stay in lockstep with the `.pin-*` media query in
+ * globals.css — this is only used to keep keyboard focus out of faded-out
+ * slides, so if the two disagree, focus lands somewhere invisible.
+ */
+export function usePinned(): boolean {
+  return useMediaQuery(
+    "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+  );
+}
+
 const noopSubscribe = () => () => {};
 
 /** False on the server and during hydration, true from the first commit on. */

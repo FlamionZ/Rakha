@@ -112,6 +112,11 @@ export const ui = {
     home: { id: "Kembali ke beranda", en: "Return home" },
   },
 
+  rail: {
+    label: { id: "Navigasi bagian", en: "Section navigation" },
+    overview: { id: "Ikhtisar", en: "Overview" },
+  },
+
   a11y: {
     switchLanguage: { id: "Ganti bahasa", en: "Switch language" },
     skipToContent: { id: "Lompat ke konten", en: "Skip to content" },

@@ -19,7 +19,7 @@ export function Services() {
   const { t } = useLocale();
 
   return (
-    <section className="px-5 py-24 sm:px-8 sm:py-32">
+    <section id="services" className="scroll-mt-24 px-5 py-24 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeadingInline />
 
