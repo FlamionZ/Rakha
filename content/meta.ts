@@ -40,4 +40,12 @@ export const pageMeta = {
       en: "Eleven shipped software products: AI-native POS systems, domain-specific RAG engines, an enterprise insurance CRM, a regional MSME search platform and a high-concurrency live-chat platform.",
     },
   },
+
+  notes: {
+    title: { id: "Catatan", en: "Notes" },
+    description: {
+      id: "Catatan teknis tentang keputusan arsitektur nyata: kapan VLM mengalahkan OCR, menjaga inferensi berat di luar jalur kritis, dan vector search di dalam PostgreSQL.",
+      en: "Technical notes on real architecture decisions: when a VLM beats OCR, keeping heavy inference off the critical path, and vector search inside PostgreSQL.",
+    },
+  },
 } satisfies Record<string, PageMeta>;

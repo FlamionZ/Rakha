@@ -1,10 +1,24 @@
 import type { MetadataRoute } from "next";
+import { notesByDate } from "@/content/notes";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
 import { LOCALES } from "@/lib/locale";
 
-/** Every page, in every language, with its siblings declared. */
-const PATHS = ["/", "/work", "/about", ...projects.map((p) => `/work/${p.slug}`)];
+/**
+ * Every page, in every language, with its siblings declared.
+ *
+ * /notes and its entries appear only once a note exists — submitting an empty
+ * index to Google invites it to judge the site thinner than it is.
+ */
+const PATHS = [
+  "/",
+  "/work",
+  "/about",
+  ...projects.map((p) => `/work/${p.slug}`),
+  ...(notesByDate.length > 0
+    ? ["/notes", ...notesByDate.map((n) => `/notes/${n.slug}`)]
+    : []),
+];
 
 /**
  * The site previously had no sitemap at all, so discovery depended entirely on

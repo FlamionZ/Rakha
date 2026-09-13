@@ -3,6 +3,7 @@ import type { Locale } from "@/content/types";
 import { LOCALES } from "@/lib/locale";
 import { education, experience } from "@/content/experience";
 import type { Project } from "@/content/types";
+import type { Note } from "@/content/notes";
 import { projects } from "@/content/projects";
 import { site, summary } from "@/content/site";
 
@@ -186,5 +187,24 @@ export function projectSchema(locale: Locale, project: Project) {
     ...(project.repos.length > 0
       ? { codeRepository: project.repos.map((repo) => repo.href) }
       : {}),
+  };
+}
+
+/** A published note. `Article` is the right type here — this one is writing. */
+export function articleSchema(locale: Locale, note: Note) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${absolute(locale, `/notes/${note.slug}`)}#article`,
+    headline: note.title[locale],
+    description: note.summary[locale],
+    datePublished: note.date,
+    dateModified: note.date,
+    inLanguage: locale,
+    url: absolute(locale, `/notes/${note.slug}`),
+    keywords: note.tags.join(", "),
+    author: { "@id": `${site.url}/#person` },
+    publisher: { "@id": `${site.url}/#person` },
+    isPartOf: { "@id": `${site.url}/#website` },
   };
 }

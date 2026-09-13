@@ -11,7 +11,12 @@ import { statusLabel, tagLabel, tagOrder, ui } from "@/content/ui";
 import { useFinePointer, usePrefersReducedMotion } from "@/lib/hooks";
 import { useLocale } from "@/lib/i18n";
 
-type Filter = ProjectTag | "all";
+/**
+ * "case" is not a tag — it is depth. Five of the eleven carry a full case
+ * study, and those are the ones worth an employer's time first; without a way
+ * to ask for them, the six thinner entries dilute the five strong ones.
+ */
+type Filter = ProjectTag | "all" | "case";
 
 const STATUS_TONE: Record<Project["status"], string> = {
   live: "text-accent",
@@ -54,6 +59,11 @@ export function ProjectIndex() {
     const tags = tagOrder.filter((tag) => projects.some((p) => p.tags.includes(tag)));
     return [
       { key: "all" as Filter, label: ui.filter.all, count: projects.length },
+      {
+        key: "case" as Filter,
+        label: ui.filter.deepDive,
+        count: projects.filter((p) => p.caseStudy).length,
+      },
       ...tags.map((tag) => ({
         key: tag as Filter,
         label: tagLabel[tag],
@@ -62,10 +72,11 @@ export function ProjectIndex() {
     ];
   }, []);
 
-  const visible = useMemo(
-    () => (active === "all" ? projects : projects.filter((p) => p.tags.includes(active))),
-    [active],
-  );
+  const visible = useMemo(() => {
+    if (active === "all") return projects;
+    if (active === "case") return projects.filter((p) => p.caseStudy);
+    return projects.filter((p) => p.tags.includes(active));
+  }, [active]);
 
   function trackPointer(event: React.PointerEvent) {
     mx.set(event.clientX);
@@ -183,8 +194,17 @@ export function ProjectIndex() {
                   <span className="block truncate font-display text-lg font-bold tracking-tight text-fg transition-colors duration-300 group-hover:text-[var(--accent)] sm:text-xl">
                     {project.name}
                   </span>
-                  <span className="mt-0.5 block truncate font-mono text-[11px] text-muted lg:mt-0 lg:text-xs">
-                    {t(project.domain)}
+                  <span className="mt-0.5 flex items-center gap-2 truncate font-mono text-[11px] text-muted lg:mt-0 lg:text-xs">
+                    <span className="truncate">{t(project.domain)}</span>
+                    {/* Depth, visible while scanning rather than only after a click */}
+                    {project.caseStudy && (
+                      <span
+                        title={t(ui.filter.hasCaseStudy)}
+                        className="shrink-0 rounded-xs border border-border-bright px-1.5 py-px text-[9px] uppercase tracking-[0.14em] text-faint transition-colors duration-300 group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]"
+                      >
+                        {t(ui.project.caseStudy)}
+                      </span>
+                    )}
                   </span>
                 </span>
 

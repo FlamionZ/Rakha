@@ -8,6 +8,7 @@ import { TechIcon, hasTechIcon } from "@/components/tech/TechIcon";
 import type { Project } from "@/content/types";
 import { ui } from "@/content/ui";
 import { useLocale } from "@/lib/i18n";
+import { ArchitectureDiagram } from "./ArchitectureDiagram";
 import { CaseStudyNarrative } from "./CaseStudyNarrative";
 import { StatusChip } from "./Badges";
 import { ProjectImage } from "./ProjectImage";
@@ -155,8 +156,16 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
           </div>
         )}
 
+        {/* The prose above describes the system; this shows it. */}
+        {project.architecture && (
+          <ArchitectureDiagram
+            architecture={project.architecture}
+            accent={project.accent}
+          />
+        )}
+
         <div className="grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-3">
-          {/* Value engineering */}
+          {/* Engineering decisions */}
           <div className="lg:col-span-2">
             <Reveal>
               <h2 className="label mb-10 flex items-center gap-3">

@@ -8,6 +8,7 @@ export const ui = {
   nav: {
     home: { id: "Beranda", en: "Home" },
     work: { id: "Karya", en: "Work" },
+    notes: { id: "Catatan", en: "Notes" },
     about: { id: "Tentang", en: "About" },
     contact: { id: "Kontak", en: "Contact" },
     menu: { id: "Menu", en: "Menu" },
@@ -31,6 +32,20 @@ export const ui = {
       en: "Five projects that best represent how I work. The rest are waiting on the work page.",
     },
     viewAll: { id: "Lihat semua 11 proyek", en: "View all 11 projects" },
+
+    referencesLabel: { id: "Referensi", en: "References" },
+
+    stackLabel: { id: "Perangkat", en: "Toolkit" },
+    stackTitle: { id: "Yang saya pakai, dan seberapa sering", en: "What I use, and how often" },
+    stackBody: {
+      id: "Dikelompokkan menurut kegunaannya. Angka di sebelah setiap nama adalah jumlah proyek di halaman karya yang benar-benar memakainya — bukan penilaian diri.",
+      en: "Grouped by what each is for. The number beside each name is how many projects on the work page actually use it — not a self-assessment.",
+    },
+    stackUsedIn: { id: "Dipakai di proyek:", en: "Used in projects:" },
+    stackFootnote: {
+      id: "Dihitung dari stack 11 proyek di halaman karya.",
+      en: "Counted from the stacks of the 11 projects on the work page.",
+    },
 
     servicesLabel: { id: "Layanan", en: "Services" },
     servicesTitle: {
@@ -61,6 +76,10 @@ export const ui = {
     stack: { id: "Teknologi", en: "Tech Stack" },
     aiPipeline: { id: "Pipeline AI", en: "AI Pipeline" },
     highlights: { id: "Keputusan Teknis", en: "Engineering Decisions" },
+    // Distinct from `architecture` below, which labels the case-study
+    // paragraph. This one labels the drawn diagram.
+    diagram: { id: "Arsitektur Sistem", en: "System Architecture" },
+    diagramInsight: { id: "Mengapa bentuknya begini", en: "Why it is shaped this way" },
     sourceCode: { id: "Kode Sumber", en: "Source Code" },
     links: { id: "Tautan", en: "Links" },
     backToWork: { id: "Kembali ke Karya", en: "Back to Work" },
@@ -74,8 +93,23 @@ export const ui = {
     outcome: { id: "Hasil", en: "Outcome" },
   },
 
+  notes: {
+    title: { id: "Catatan teknis", en: "Technical notes" },
+    body: {
+      id: "Keputusan yang saya ambil di proyek nyata, ditulis lengkap — termasuk bagian yang tidak berjalan sesuai rencana.",
+      en: "Decisions I made on real projects, written out in full — including the parts that did not go to plan.",
+    },
+    empty: {
+      id: "Belum ada catatan yang diterbitkan.",
+      en: "No notes published yet.",
+    },
+    fromProject: { id: "Dari proyek", en: "From the project" },
+  },
+
   filter: {
     label: { id: "Saring", en: "Filter" },
+    deepDive: { id: "Studi kasus", en: "Case studies" },
+    hasCaseStudy: { id: "Ada studi kasus", en: "Has a case study" },
     all: { id: "Semua", en: "All" },
     empty: {
       id: "Tidak ada proyek pada kategori ini.",

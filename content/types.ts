@@ -42,6 +42,39 @@ export interface CaseStudy {
  * Only set where a real, defensible figure exists — an empty metric is better
  * than an invented one, so most projects deliberately have none.
  */
+/**
+ * A layer of a system, for the architecture diagram.
+ *
+ * Deliberately layers rather than a free-form node graph: a graph needs
+ * absolutely-positioned edges, which is exactly what stops being readable at
+ * 375px. Layers carry the same information — what sits where, and what talks
+ * to what — in an order that survives being stacked on a phone.
+ */
+export interface ArchNode {
+  /** Technology or component name. Not localised; these are proper nouns. */
+  tech: string;
+  /** What it is responsible for HERE, in this system. */
+  note: LocalizedText;
+  /** Marks the AI path, which is the part worth distinguishing visually. */
+  ai?: boolean;
+}
+
+export interface ArchLayer {
+  label: LocalizedText;
+  nodes: ArchNode[];
+  /** Dashed connector into this layer — work that happens off the hot path. */
+  async?: boolean;
+}
+
+export interface Architecture {
+  layers: ArchLayer[];
+  /**
+   * The single decision the diagram exists to make visible. Taken from the
+   * case-study prose rather than invented alongside it.
+   */
+  insight: LocalizedText;
+}
+
 export interface ProjectMetric {
   value: string;
   label: LocalizedText;
@@ -76,6 +109,7 @@ export interface Project {
   context?: LocalizedText;
   /** Present on deep-dived projects only. */
   caseStudy?: CaseStudy;
+  architecture?: Architecture;
   /** Only where a defensible number exists. */
   metric?: ProjectMetric;
 }

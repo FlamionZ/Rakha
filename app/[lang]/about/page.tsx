@@ -3,6 +3,8 @@ import { JsonLd } from "@/components/layout/JsonLd";
 import { AboutIntro } from "@/components/sections/AboutIntro";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { Experience } from "@/components/sections/Experience";
+import { StackTable } from "@/components/sections/StackTable";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { pageMeta } from "@/content/meta";
 import { ui } from "@/content/ui";
 import { isLocale } from "@/lib/locale";
@@ -36,6 +38,8 @@ export default async function AboutPage(props: PageProps<"/[lang]/about">) {
       />
       <AboutIntro />
       <Experience />
+      <StackTable />
+      <Testimonials />
       <ContactCTA />
     </>
   );

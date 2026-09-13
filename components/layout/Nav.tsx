@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
+import { hasNotes } from "@/content/notes";
 import { ui } from "@/content/ui";
 import { site } from "@/content/site";
 import { useLocale } from "@/lib/i18n";
@@ -13,6 +14,9 @@ import { Magnetic } from "@/components/motion/Magnetic";
 
 const LINKS = [
   { href: "/work", label: ui.nav.work },
+  // Hidden until the first note is published — an empty section in the nav
+  // advertises a gap. See content/notes.ts.
+  ...(hasNotes ? [{ href: "/notes", label: ui.nav.notes }] : []),
   { href: "/about", label: ui.nav.about },
   { href: "/#contact", label: ui.nav.contact },
 ] as const;

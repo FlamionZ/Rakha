@@ -1,6 +1,7 @@
 import type { Project } from "./types";
+import { architectures } from "./architecture";
 
-export const projects: Project[] = [
+const projectList: Project[] = [
   {
     slug: "airon",
     index: 1,
@@ -636,6 +637,16 @@ export const projects: Project[] = [
     metric: { value: "0", label: { id: "Cold-start latency", en: "Cold-start latency" } },
   },
 ];
+
+/**
+ * Diagrams are attached here rather than inlined above so that
+ * content/architecture.ts stays the single place a system's shape is edited,
+ * and a project without one simply has no `architecture` field.
+ */
+export const projects: Project[] = projectList.map((project) => {
+  const architecture = architectures[project.slug];
+  return architecture ? { ...project, architecture } : project;
+});
 
 export const featuredProjects = projects.filter((p) => p.featured);
 
