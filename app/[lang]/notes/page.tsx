@@ -89,7 +89,7 @@ export default async function NotesPage(props: PageProps<"/[lang]/notes">) {
                           {note.summary[lang]}
                         </p>
                         {note.tags.length > 0 && (
-                          <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-faint">
+                          <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[11px] text-muted">
                             {note.tags.map((tag) => (
                               <span key={tag}>#{tag}</span>
                             ))}

@@ -106,7 +106,7 @@ export function PinnedWork() {
                   <span className="text-accent">
                     {String(active + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-faint"> / {String(count).padStart(2, "0")}</span>
+                  <span className="text-muted"> / {String(count).padStart(2, "0")}</span>
                 </p>
                 <div className="relative h-px flex-1 bg-border">
                   <motion.span

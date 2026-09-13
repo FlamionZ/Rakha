@@ -46,7 +46,7 @@ export function Testimonials() {
                   ) : (
                     <span className="text-fg">{entry.author}</span>
                   )}
-                  <span className="mt-1 block text-faint">{t(entry.role)}</span>
+                  <span className="mt-1 block text-muted">{t(entry.role)}</span>
                 </figcaption>
               </figure>
             </Reveal>

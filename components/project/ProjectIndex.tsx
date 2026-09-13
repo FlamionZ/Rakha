@@ -200,7 +200,7 @@ export function ProjectIndex() {
                     {project.caseStudy && (
                       <span
                         title={t(ui.filter.hasCaseStudy)}
-                        className="shrink-0 rounded-xs border border-border-bright px-1.5 py-px text-[9px] uppercase tracking-[0.14em] text-faint transition-colors duration-300 group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]"
+                        className="shrink-0 rounded-xs border border-border-bright px-1.5 py-0.5 text-[10px] uppercase tracking-[0.14em] text-muted transition-colors duration-300 group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]"
                       >
                         {t(ui.project.caseStudy)}
                       </span>

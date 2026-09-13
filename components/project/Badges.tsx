@@ -7,8 +7,8 @@ import { useLocale } from "@/lib/i18n";
 const STATUS_STYLE: Record<ProjectStatus, string> = {
   live: "border-accent/35 bg-accent/10 text-accent",
   local: "border-accent-2/30 bg-accent-2/10 text-accent-2",
-  inactive: "border-border-bright bg-bg/70 text-faint",
-  completed: "border-border-bright bg-bg/70 text-faint",
+  inactive: "border-border-bright bg-bg/70 text-muted",
+  completed: "border-border-bright bg-bg/70 text-muted",
 };
 
 /**

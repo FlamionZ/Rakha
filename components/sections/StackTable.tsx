@@ -56,7 +56,7 @@ export function StackTable() {
                     <li key={tech} className="flex items-baseline gap-1.5">
                       <TechBadge name={tech} />
                       <span
-                        className="font-mono text-[10px] tabular-nums text-faint"
+                        className="font-mono text-[11px] tabular-nums text-muted"
                         // The badge already names the technology; this number
                         // needs its own label or it reads as a version.
                         aria-label={`${t(ui.sections.stackUsedIn)} ${usageCount[tech]}`}
@@ -72,7 +72,7 @@ export function StackTable() {
         </dl>
 
         <Reveal delay={0.1}>
-          <p className="mt-6 font-mono text-xs text-faint">
+          <p className="mt-6 font-mono text-xs text-muted">
             {t(ui.sections.stackFootnote)}
           </p>
         </Reveal>

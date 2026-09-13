@@ -74,7 +74,7 @@ export default async function NotePage(
                   {note.date}
                 </time>
                 {note.tags.map((tag) => (
-                  <span key={tag} className="text-faint">
+                  <span key={tag} className="text-muted">
                     #{tag}
                   </span>
                 ))}
