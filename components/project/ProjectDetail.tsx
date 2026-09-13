@@ -20,6 +20,24 @@ interface ProjectDetailProps {
   next?: Project;
 }
 
+/** Reads as a boundary rather than an omission. */
+function LockIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-3.5 w-3.5 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2" />
+      <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+    </svg>
+  );
+}
+
 export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
   const { t, path } = useLocale();
 
@@ -111,20 +129,33 @@ export function ProjectDetail({ project, prev, next }: ProjectDetailProps) {
                 </span>
               )}
 
-              {project.repos.map((repo) => (
-                <a
-                  key={repo.href}
-                  href={repo.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="group inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-fg transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
-                >
-                  {repo.label}
-                  <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                    &#8599;
+              {project.repos.map((repo) =>
+                repo.href ? (
+                  <a
+                    key={repo.href}
+                    href={repo.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="group inline-flex items-center gap-2 rounded-lg border border-border px-5 py-2.5 font-mono text-sm text-fg transition-colors duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                  >
+                    {repo.label}
+                    <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                      &#8599;
+                    </span>
+                  </a>
+                ) : (
+                  // Closed source: say who owns it. The same treatment as a dead
+                  // demo, because the honest failure mode is identical — never
+                  // offer a link that lands on a 404.
+                  <span
+                    key={repo.label}
+                    className="inline-flex items-center gap-2 rounded-lg border border-border border-dashed px-5 py-2.5 font-mono text-sm text-muted"
+                  >
+                    <LockIcon />
+                    {repo.restricted ? t(repo.restricted) : repo.label}
                   </span>
-                </a>
-              ))}
+                ),
+              )}
             </div>
           </Reveal>
         </header>

@@ -18,7 +18,19 @@ export interface Highlight {
 
 export interface RepoLink {
   label: string;
-  href: string;
+  /** Absent when the source cannot be published — then `restricted` says why. */
+  href?: string;
+  /**
+   * Why the source is not linkable, e.g. a client- or employer-owned
+   * repository. Rendered as a chip rather than a link.
+   *
+   * This exists because the alternative is worse in both directions: a link to
+   * a private repository lands on GitHub's 404 and reads as carelessness,
+   * while silently dropping it hides that the work has source at all. Stating
+   * the boundary is the honest option, and "owned by the client" is a fact
+   * worth showing rather than an absence to explain.
+   */
+  restricted?: LocalizedText;
 }
 
 /**

@@ -184,9 +184,14 @@ export function projectSchema(locale: Locale, project: Project) {
     author: { "@id": `${site.url}/#person` },
     creator: { "@id": `${site.url}/#person` },
     ...(demo ? { sameAs: demo } : {}),
-    ...(project.repos.length > 0
-      ? { codeRepository: project.repos.map((repo) => repo.href) }
-      : {}),
+    // Only repositories that actually resolve. A closed repo has no href, and
+    // emitting `undefined` here would put a null into the structured data.
+    ...(() => {
+      const published = project.repos
+        .map((repo) => repo.href)
+        .filter((href): href is string => Boolean(href));
+      return published.length > 0 ? { codeRepository: published } : {};
+    })(),
   };
 }
 

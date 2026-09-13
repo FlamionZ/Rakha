@@ -37,7 +37,13 @@ const projectList: Project[] = [
         },
       },
     ],
-    repos: [{ label: "GitHub", href: "https://github.com/FlamionZ/Airon" }],
+    repos: [{
+        label: "Kode Sumber",
+        restricted: {
+          id: "Repo privat — milik Astheron Technologies",
+          en: "Private repository — owned by Astheron Technologies",
+        },
+      }],
     demo: {
       href: "https://airon.astheron.my.id/",
       label: { id: "Demo Langsung", en: "Live Demo" },
@@ -112,7 +118,13 @@ const projectList: Project[] = [
         },
       },
     ],
-    repos: [{ label: "GitHub", href: "https://github.com/maulanawirawan/aron-project" }],
+    repos: [{
+        label: "Kode Sumber",
+        restricted: {
+          id: "Repo privat — milik klien, dibangun bersama tim",
+          en: "Private repository — client-owned, built with a team",
+        },
+      }],
     demo: {
       href: "https://aron.iliterate.ai/",
       label: { id: "Demo Langsung", en: "Live Demo" },
@@ -193,7 +205,13 @@ const projectList: Project[] = [
         },
       },
     ],
-    repos: [{ label: "GitHub", href: "https://github.com/astherontechnologies/Proteron" }],
+    repos: [{
+        label: "Kode Sumber",
+        restricted: {
+          id: "Repo privat — milik Astheron Technologies",
+          en: "Private repository — owned by Astheron Technologies",
+        },
+      }],
     demo: {
       href: "https://proteron.astheron.my.id/",
       label: { id: "Demo Langsung", en: "Live Demo" },
@@ -334,7 +352,13 @@ const projectList: Project[] = [
         },
       },
     ],
-    repos: [{ label: "GitHub", href: "https://github.com/FlamionZ/Assistarty.ai" }],
+    repos: [{
+        label: "Kode Sumber",
+        restricted: {
+          id: "Repo privat — milik Astheron Technologies",
+          en: "Private repository — owned by Astheron Technologies",
+        },
+      }],
     demo: { label: { id: "Lingkungan Lokal · Internal", en: "Local Environment · Internal" } },
     status: "local",
     featured: true,
@@ -447,7 +471,13 @@ const projectList: Project[] = [
         },
       },
     ],
-    repos: [{ label: "GitHub", href: "https://github.com/FlamionZ/Focaron" }],
+    repos: [{
+        label: "Kode Sumber",
+        restricted: {
+          id: "Repo privat — milik Astheron Technologies",
+          en: "Private repository — owned by Astheron Technologies",
+        },
+      }],
     demo: { label: { id: "Lingkungan Lokal · Internal", en: "Local Environment · Internal" } },
     status: "local",
     featured: false,
@@ -585,10 +615,15 @@ const projectList: Project[] = [
     ],
     repos: [{ label: "GitHub", href: "https://github.com/FlamionZ/Villa-Luxury" }],
     demo: {
-      href: "https://villadiengluxury.com/",
-      label: { id: "Demo Langsung", en: "Live Demo" },
+      // The client has not renewed villadiengluxury.com, so the link served an
+      // SSL error and then a domain-parking page. Stating that beats sending a
+      // visitor to a broken certificate.
+      label: {
+        id: "Domain klien belum diperpanjang",
+        en: "Client domain not renewed",
+      },
     },
-    status: "live",
+    status: "inactive",
     featured: false,
     accent: "#5cd6a8",
     image: "/projects/yumna-villa-dieng.webp",
@@ -624,7 +659,13 @@ const projectList: Project[] = [
         },
       },
     ],
-    repos: [{ label: "GitHub", href: "https://github.com/astherontechnologies/ashteron" }],
+    repos: [{
+        label: "Kode Sumber",
+        restricted: {
+          id: "Repo privat — milik Astheron Technologies",
+          en: "Private repository — owned by Astheron Technologies",
+        },
+      }],
     demo: {
       href: "https://astheron.my.id/",
       label: { id: "Demo Langsung", en: "Live Demo" },
